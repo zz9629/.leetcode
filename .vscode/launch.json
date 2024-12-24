@@ -1,0 +1,36 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            // "name": "(clangd) Launch",
+            // "type": "cpp",
+            // "request": "launch",
+            // "program": "${workspaceFolder}/${fileBasenameNoExtension}",
+            // "args": [],
+            // "stopAtEntry": false,
+            // "cwd": "${workspaceFolder}",
+            // "environment": [],
+            // "externalConsole": false,
+            // "setupCommands": [
+            //     {
+            //         "description": "Enable pretty-printing for gdb",
+            //         "text": "-enable-pretty-printing",
+            //         "ignoreFailures": true
+            //     }
+            // ],
+            // "preLaunchTask": "Build C++"
+            "name": "clang++ - Build and debug active file",
+            // "type": "cppdbg",
+            "type": "lldb",
+            "request": "launch",
+            "program": "${fileDirname}/${fileBasenameNoExtension}",
+            "args": [],
+            "stopAtEntry": true,
+            "cwd": "${workspaceFolder}",
+            "environment": [],
+            "externalConsole": false,
+            "MIMode": "lldb",
+            "preLaunchTask": "clang++ build active file"      
+        }
+    ]
+}
