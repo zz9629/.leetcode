@@ -9,6 +9,7 @@ using namespace std;
 // @lc code=start
 class Solution {
 public:
+    // 二维
     int coinChange_(vector<int>& coins, int amount) {
         if (amount == 0) return 0;
         if (coins.empty()) return -1;
@@ -31,6 +32,7 @@ public:
         return dp[n][amount] == amount + 1 ? -1 : dp[n][amount];
     }
 
+    // 空间压缩
     int coinChange(vector<int>& coins, int amount) {
         if (amount == 0) return 0;
         if (coins.empty()) return -1;

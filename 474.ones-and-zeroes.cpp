@@ -10,7 +10,7 @@ using namespace std;
 // @lc code=start
 class Solution {
 public:
-    void count(string& str, int & zeroCount, int & oneCount)
+    void countStr(string& str, int & zeroCount, int & oneCount)
     {
         for (int i = 0; i < str.length(); i++)
         {
@@ -19,7 +19,7 @@ public:
         }
     }
 
-    int findMaxForm(vector<string>& strs, int m, int n) {
+    int findMax_Form(vector<string>& strs, int m, int n) {
         if (strs.empty() || (!m && !n)) return 0;
         int size = strs.size();
         vector<vector<vector<int>>> dp(size + 1, 
@@ -33,7 +33,7 @@ public:
                 for (int k = 0; k <= n; k++)
                 {
                     int temp_m = 0, temp_n = 0;
-                    count(strs[i - 1], temp_m, temp_n);
+                    countStr(strs[i - 1], temp_m, temp_n);
                     if (temp_m <= j && temp_n <= k)
                     {
                         dp[i][j][k] = max(dp[i - 1][j - temp_m][k - temp_n] + 1, 
@@ -47,7 +47,7 @@ public:
         return dp[size][m][n];
     }
 
-    int findMaxForm_(vector<string>& strs, int m, int n) {
+    int findMaxForm(vector<string>& strs, int m, int n) {
         vector<vector<int> > dp(m + 1, vector<int>(n + 1, 0));
         for (auto& str : strs)
         {
@@ -57,7 +57,7 @@ public:
             {
                 for (int j = n; j >= ones; j--)
                 {
-                    dp[i][j] = max(dp[i][j], dp[i - zeors][j - ones]);
+                    dp[i][j] = max(dp[i][j], dp[i - zeros][j - ones] + 1);
                 }
             }
         }
