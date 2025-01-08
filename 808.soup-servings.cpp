@@ -16,7 +16,7 @@ public:
         else return 0;
     } 
 
-    double soupServings(int n) {
+    double soupServings_(int n) {
         int stock = (n + 24) / 25;
         if (stock >= 179) {
             return 1.0;
@@ -41,11 +41,10 @@ public:
         }
         return dp[stock][stock];
     }
-
-
-    int fun(int n) {
+    
+    double soupServings(int n) {
         n = (n + 24) / 25;
-        if (n > 168) return 1;
+        if (n > 179) return 1;
         vector<vector<double>> dp(n + 1, vector<double>(n + 1, 0));
         vector<pair<int, int>> directions = {{-4, 0}, {-3, -1}, {-2, -2}, {-1, -3}};
 
@@ -55,8 +54,8 @@ public:
                 for (const auto& dir: directions) {
                     int row = i + dir.first, col = j + dir.second;
                     if (row > 0 && col > 0) sum += dp[row][col];
-                    else if (row <= 0 && col <= 0) sum += 1;
-                    else if (row > 0 && col <= 0) sum += 0.5;
+                    if (row <= 0 && col <= 0) sum += 0.5;
+                    else if (row <= 0 && col > 0) sum += 1;
                 }
                 dp[i][j] = sum / 4;
             }

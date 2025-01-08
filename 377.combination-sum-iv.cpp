@@ -11,6 +11,8 @@ public:
         if(nums.empty()) return 0;
         vector<unsigned int> dp(target + 1, 0);
         dp[0] = 1;
+        // 完全背包，价值在外正向遍历
+        // dp[i][j] = 不拿dp[i - 1][j] + 拿dp[i][j - weight]
         for (int i = 1; i <= target; i++) {
             for (const auto& num: nums) {
                 if (i >= num) dp[i] += dp[i - num];
