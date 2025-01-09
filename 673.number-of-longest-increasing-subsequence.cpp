@@ -10,7 +10,7 @@ using namespace std;
 // @lc code=start
 class Solution {
 public:
-    int findNumberOfLIS(vector<int>& nums) {
+    int findNumberOfLIS_(vector<int>& nums) {
         int n = nums.size();
         if (n <= 1) return n;
         vector<int> len(n + 1, 1);
@@ -36,6 +36,41 @@ public:
         }
         return result;
     }
+
+    // 没有扩充数组
+    int findNumberOfLIS(vector<int>& nums) {
+        int N = nums.size();
+        int max_len = 1;                // 初始化为1
+        vector<int> dp(N, 1);      // 初始化为1
+        vector<int> count(N, 1);   // 初始化为1
+        for (int i = 1; i < N; i++)
+        {
+            for (int j = i - 1; j >= 0; j--)
+            {
+                if (nums[j] < nums[i])
+                {
+                    if (dp[i] < dp[j] + 1)
+                    {
+                        dp[i] = dp[j] + 1;    // 新的递增，长度加1
+                        count[i] = count[j];  // 个数相等
+                    }
+                    else if (dp[i] == dp[j] + 1)
+                    {
+                        count[i] += count[j]; // 前面有排列组合，加上前面的个数
+                    }
+                }
+            }
+            max_len = max(max_len, dp[i]); // 最长的长度
+        }
+
+        int result = 0;
+        for (int i = 0; i < N; i++)
+        {
+            if (dp[i] == max_len) result += count[i];
+        }
+        return result;
+    }
+
 };
 // @lc code=end
 
