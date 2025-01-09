@@ -21,7 +21,7 @@ public:
         return result;
     }
 
-    int numTrees(int n) {
+    int numTrees_(int n) {
         // method 1: as 1130
         // vector<vector<int>> memo(n + 1, vector<int>(n + 1, -1));
         // int left = 1, right = n;
@@ -40,6 +40,23 @@ public:
         }
         return dp[n];
     }
+
+    int numTrees(int n) {
+        vector<int> dp(20, 0);      
+        // 注意boundary问题，需要指定dp20，否则dp2和dp3会出界
+        dp[0] = 1, dp[1] = 1, dp[2] = 2, dp[3] = 5; 
+        for (int i = 2; i <= n; i++)
+        {
+            int sum = 0;
+            for (int j = 1; j <= i; j++)
+            {
+                sum += dp[j - 1] * dp[i - j];
+            }
+            dp[i] = sum;
+        }
+        return dp[n];
+    }
+
 };
 // @lc code=end
 
