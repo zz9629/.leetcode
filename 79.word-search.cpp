@@ -10,29 +10,8 @@ using namespace std;
 // @lc code=start
 class Solution {
 public:
-    void dfs(vector<vector<char> >& board, 
-             vector<vector<bool> >& visited, 
-             string & word, 
-             int row, int col, int level, bool& found)
-    {
-        int m = board.size(), n = board[0].size();
-        if (found || row < 0 || row >= m || col < 0 || col >= n || visited[row][col]) return;
-        if (level == word.length()) 
-        {
-            found = true;
-            return;
-        }
-        if(board[row][col] == word[level]) 
-        {
-            visited[row][col] = true;
-            vector<pair<int, int>> directions = {{-1, 0}, {1, 0}, {0, 1}, {0, -1}};
-            for (auto & dir: directions) 
-            {
-                auto i = row + dir.first, j = col + dir.second;
-                dfs(board, visited, word, i, j, level + 1, found);
-            }
-        }
-    }
+    vector<pair<int, int>> directions = {{-1, 0}, {1, 0}, {0, 1}, {0, -1}};
+
     void backtracing(vector<vector<char> >& board, 
              vector<vector<bool> >& visited, 
              string & word, 
@@ -47,7 +26,6 @@ public:
             return;
         }
         visited[row][col] = true;
-        vector<pair<int, int>> directions = {{-1, 0}, {1, 0}, {0, 1}, {0, -1}};
         for (auto & dir: directions) 
         {
             auto i = row + dir.first, j = col + dir.second;

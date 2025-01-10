@@ -51,7 +51,9 @@ public:
             }
             mat[row][col] = 'Q';
             column[col] = r_dia[row + col] = l_dia[n - 1 - row + col] = 1;
+
             backTrace(results, mat, n, row + 1, column, r_dia, l_dia);
+
             mat[row][col] = '.';
             column[col] = r_dia[row + col] = l_dia[n - 1 - row + col] = 0;
         }
@@ -67,47 +69,6 @@ public:
         backTrace(results, mat, n, 0, column, r_dia, l_dia);
         return results;
     }
-
-        
-    void traceback( 
-        vector<vector<string> >& result, 
-        vector<string>& mat, 
-        int row, 
-        int n, 
-        vector<int>& column, 
-        vector<int>& left_dia, 
-        vector<int>& right_dia)
-    {   
-        if (row == n) 
-        {
-            result.push_back(mat);
-            return;
-        }
-        for (int col = 0; col < n; col++)
-        {
-            if (!(column[col] || right_dia[col + row] || left_dia[n - 1 - row + col]))
-            {
-                mat[row][col] = 'Q';
-                column[col] = right_dia[col + row] = left_dia[n - 1 - row + col] = 1;
-                
-                traceback(result, mat, row + 1, n, column, left_dia, right_dia);
-
-                mat[row][col] = '.';
-                column[col] = right_dia[col + row] = left_dia[n - 1 - row + col] = 0;
-            }
-        }
-    }
-    vector<vector<string> > solveNQueens_(int n) {
-        vector<vector<string> > result;
-        if (n < 1) return result;
-        vector<string> mat(n, string(n, '.'));
-
-        vector<int> column(n, 0);
-        vector<int> left_dia(2 * n - 1, 0);
-        vector<int> right_dia(2 * n - 1, 0);
-        traceback(result, mat, 0, n, column, left_dia, right_dia);
-    }
-
 };
 // @lc code=end
 

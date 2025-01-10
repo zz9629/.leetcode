@@ -36,10 +36,10 @@ public:
         while (left < right){
             int mid = left + (right - left) / 2;
             // right is sorted
-            if (nums[left] > nums[mid]) {
+            if (nums[left] > nums[mid]) {  // 可能是mid
                 right = mid;
             }
-            else if (nums[mid] > nums[right]) {
+            else if (nums[mid] > nums[right]) { // 不可能是mid
                 left = mid + 1;
             }
             else right--;
