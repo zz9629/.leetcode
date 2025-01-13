@@ -13,7 +13,7 @@ public:
         for (int i = 2; i <= n; i++)
         {
             dp[i] = i; // max value, for prime number
-            for (int j = i / 2; j > 1; j--) // start from i / 2;
+            for (int j = i / 2; j > 1; j--) // start from i / 2; 指数增长是最快的
             {
                 if(i % j == 0) {    // can be divided by j
                     dp[i] = dp[j] + i/j;

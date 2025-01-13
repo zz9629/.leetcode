@@ -27,13 +27,12 @@ public:
 
     // 压缩到一维
     int numSquares(int n) {
-        vector<int> dp(n + 1, n);
-        dp[0] = 0, dp[1] = 1;
-
+        vector<int> dp(n + 1, 0);
         for (int i = 1; i <= n; i++)
         {
+            dp[i] = i;
             // 注意控制j的范围 j * j <= i
-            for (int j = 1; j * j <= i; j++)
+            for (int j = 2; j * j <= i; j++)
             {
                 dp[i] = min(dp[i], dp[i - j * j] + 1);
             }
