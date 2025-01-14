@@ -49,9 +49,8 @@ public:
         return accumulate(dp.begin(), dp.end(), 0);
     }
 
-    int countSubstrings(string s) {
+    int countSubstrings_(string s) {
         int n = s.length();
-        vector<int> dp(n, 0);
         int ans = 0;
         vector<vector<bool>> memo(n, vector<bool>(n, false));
         for (int i = 0; i < n; i++)
@@ -87,6 +86,14 @@ public:
         }
         return ans;
     }
+
+
+    int countSubstrings(string s) {
+    
+    
+    
+    }
+
 };
 // @lc code=end
 

@@ -13,7 +13,7 @@ using namespace std;
 // @lc code=start
 class Solution {
 public:
-    int mincostTickets(vector<int>& days, vector<int>& costs) {
+    int mincostTickets_(vector<int>& days, vector<int>& costs) {
         vector<int> dp(366, INT_MAX);
         dp[0] = 0;
         unordered_map<int, int> tickets;
@@ -33,6 +33,13 @@ public:
         }
         return dp[days[days.size() - 1]];
     }
+
+
+
+    int mincostTickets(vector<int>& days, vector<int>& costs) {
+
+    }
+
 };
 // @lc code=end
 
