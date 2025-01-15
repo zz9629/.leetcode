@@ -81,12 +81,10 @@ public:
         return a + b - sum * 2;
     }
 
-    int minimumDeleteSum__(string s1, string s2) {
+    int minimumDeleteSum(string s1, string s2) {
         int m = s1.length(), n = s2. length();
  
-        vector<vector<int>> dp(m + 1, vector<int>(n + 1, INT_MAX));
-
-        dp[0][0] = 0;
+        vector<vector<int>> dp(m + 1, vector<int>(n + 1, 0));
 
         for (int i = 1; i <= m; i++)
         {
@@ -114,12 +112,6 @@ public:
 
         return dp[m][n];
     }
-
-
-    int minimumDeleteSum(string s1, string s2) {
-        
-    }
-
 };
 // @lc code=end
 
