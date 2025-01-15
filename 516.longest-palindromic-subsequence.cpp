@@ -3,15 +3,18 @@
  *
  * [516] Longest Palindromic Subsequence
  */
+#include "vector"
+#include "string"
 
+using namespace std;
 // @lc code=start
 class Solution {
 public:
-    int longestPalindromeSubseq(string s) {
+    int longestPalindromeSubseq_(string s) {
         int n = s.length();
         vector<vector<int> > dp(n, vector<int>(n, 0));
 
-        int res = 0;
+        // int res = 0;
         for (int i = 0; i < n; i++)
         {
             for (int j = i; j >= 0; j--)
@@ -29,11 +32,17 @@ public:
                 else {
                     dp[j][i] = max(dp[j + 1][i], dp[j][i - 1]);
                 }
-                res = max(res, dp[j][i]);
+                // res = max(res, dp[j][i]);
             }
         }
-        return res;
+        // return res;
+        return dp[0][n - 1];
     }
+
+    int longestPalindromeSubseq(string s) {
+      
+    }
+
 };
 // @lc code=end
 

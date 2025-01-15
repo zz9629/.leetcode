@@ -38,7 +38,7 @@ public:
     }
 
     // 没有扩充数组
-    int findNumberOfLIS(vector<int>& nums) {
+    int findNumberOfLIS__(vector<int>& nums) {
         int N = nums.size();
         int max_len = 1;                // 初始化为1
         vector<int> dp(N, 1);      // 初始化为1
@@ -71,6 +71,9 @@ public:
         return result;
     }
 
+    int findNumberOfLIS(vector<int>& nums) {
+       
+    }
 };
 // @lc code=end
 

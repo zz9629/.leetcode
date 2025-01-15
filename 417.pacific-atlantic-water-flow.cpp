@@ -12,55 +12,6 @@ using namespace std;
 // @lc code=start
 class Solution {
 public:
-    void dfs_(vector<vector<int> >& heights, vector<vector<bool> >& reach_ocean, int i, int j)
-    {
-        int m = heights.size(), n = heights[0].size();
-        if (reach_ocean[i][j]) return;
-        reach_ocean[i][j] = true;
-        vector<pair<int, int>> directions = {{-1, 0}, {1, 0}, {0, 1}, {0, -1}};
-        for (auto& dir : directions)
-        {
-            int row = i + dir.first;
-            int col = j + dir.second;
-            if (row >= 0 && row < m && col >= 0 && col < n 
-                && heights[row][col] >= heights[i][j])
-                {
-                    dfs(heights, reach_ocean, row, col);
-                }
-        }
-    }
-
-    vector<vector<int> > pacificAtlantic_(vector<vector<int> >& heights) {
-        if (heights.empty() || heights[0].empty()) return {};
-        int m = heights.size(), n = heights[0].size();
-        vector<vector<bool> > reach_pacific(m, vector<bool>(n, false));
-        vector<vector<bool> > reach_atlantic(m, vector<bool>(n, false));
-
-        for (int i = 0; i < m; i++)
-        {
-            dfs(heights, reach_pacific, i, 0);
-            dfs(heights, reach_atlantic, i, n - 1);
-        }
-        for (int j = 0; j < n; j++)
-        {
-            dfs(heights, reach_pacific, 0, j);
-            dfs(heights, reach_atlantic, m - 1, j); 
-        }
-
-        vector<vector<int> > result;
-        for (int i = 0; i < m; i++)
-        {
-            for (int j = 0; j < n; j++)
-            {
-                if (reach_pacific[i][j] && reach_atlantic[i][j])
-                {
-                    result.push_back(vector<int>{i, j});
-                }
-            }
-        }
-        return result;
-    }
-
     void dfs(vector<vector<int> >& heights, vector<vector<bool> >& canVisit, int row, int col)
     {
         if (heights.empty() || heights[0].empty()) return;
