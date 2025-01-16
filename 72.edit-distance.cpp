@@ -13,7 +13,7 @@
 #include <climits>
 class Solution {
 public:
-    int minDistance(string word1, string word2) {
+    int minDistance_(string word1, string word2) {
         int m = word1.length(), n = word2.length();
         vector<vector<int>> dp(m + 1, vector<int>(n + 1, 0)); // m + n
         // dp[0][0] = 0;
@@ -42,6 +42,13 @@ public:
         }
         return dp[m][n];
     }
+
+
+    int minDistance(string word1, string word2) {
+
+
+    }
+
 };
 // @lc code=end
 

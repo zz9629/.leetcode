@@ -3,8 +3,12 @@
  *
  * [96] Unique Binary Search Trees
  */
+#include "vector"
+using namespace std;
 
 // @lc code=start
+#include <cstdio>
+
 class Solution {
 public:
    int helper(int n, int left, int right, vector<vector<int>>& memo) {
@@ -30,6 +34,11 @@ public:
         // method 2: 
         // https://leetcode.com/problems/unique-binary-search-trees/solutions/31666/dp-solution-in-6-lines-with-explanation-f-i-n-g-i-1-g-n-i 
         vector<int> dp(n + 1, 0);
+
+        // vector<int> dp(20, 0);      
+        // 注意boundary问题，需要指定dp20，否则dp2和dp3会出界
+        // dp[0] = 1, dp[1] = 1, dp[2] = 2, dp[3] = 5; 
+
         dp[0] = dp[1] = 1;      // 注意dp0 = dp1 = 1
         for (int i = 2; i <= n; i++) {
             int sum = 0;
@@ -42,21 +51,16 @@ public:
     }
 
     int numTrees(int n) {
-        vector<int> dp(20, 0);      
-        // 注意boundary问题，需要指定dp20，否则dp2和dp3会出界
-        dp[0] = 1, dp[1] = 1, dp[2] = 2, dp[3] = 5; 
-        for (int i = 2; i <= n; i++)
-        {
-            int sum = 0;
-            for (int j = 1; j <= i; j++)
-            {
-                sum += dp[j - 1] * dp[i - j];
-            }
-            dp[i] = sum;
-        }
-        return dp[n];
-    }
 
+    
+    }
 };
 // @lc code=end
 
+int main()
+{
+    Solution s;
+    s.numTrees(3);
+
+    return 0;
+}

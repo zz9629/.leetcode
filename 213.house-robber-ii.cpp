@@ -10,10 +10,10 @@ public:
     int rob(vector<int>& nums, int left, int right)
     {
         int pre = 0, cur = 0;
-        for (int i = left; i <= right; i++)
+        for(int i = left; i <= right; i++)
         {
             int temp = cur;
-            cur = max(pre + nums[i], temp);
+            cur = max(pre + nums[i], cur);
             pre = temp;
         }
         return cur;

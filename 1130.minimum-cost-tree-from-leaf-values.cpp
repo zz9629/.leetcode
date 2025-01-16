@@ -30,11 +30,23 @@ public:
         return res;
     }
     
-    int mctFromLeafValues(vector<int>& arr) {
+    int mctFromLeafValues_(vector<int>& arr) {
         int n = arr.size();
         vector<vector<int>> memo(n, vector<int> (n, - 1));
-        return helper(arr, 0, n - 1, memo);
+        return help(arr, 0, n - 1, memo);
     }
+    
+
+    
+    int help(vector<int>& arr, int left, int right, vector<vector<int>>& memo)
+    {
+        return 0;
+    }
+
+    int mctFromLeafValues(vector<int>& arr) {
+        return 0;
+    }
+ 
 };
 // @lc code=end
 
