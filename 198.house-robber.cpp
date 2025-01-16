@@ -9,6 +9,8 @@ class Solution {
 public:
     int rob(vector<int>& nums) {
         if (nums.empty()) return 0;
+
+        /*
         int n = nums.size();
         vector<int> dp(n + 1, 0);
         dp[1] = nums[0];
@@ -17,6 +19,15 @@ public:
         }
 
         return dp[n];
+        */
+        int pre = 0, cur = 0;
+        for (auto& num: nums)
+        {
+            int temp = cur;
+            cur = max(pre + num, temp);
+            pre = temp;
+        }
+        return cur;
     }
 };
 // @lc code=end
