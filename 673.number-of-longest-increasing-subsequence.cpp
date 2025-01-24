@@ -38,12 +38,12 @@ public:
     }
 
     // 没有扩充数组
-    int findNumberOfLIS__(vector<int>& nums) {
+    int findNumberOfLIS(vector<int>& nums) {
         int N = nums.size();
-        int max_len = 1;                // 初始化为1
+        int max_len = 0;                
         vector<int> dp(N, 1);      // 初始化为1
         vector<int> count(N, 1);   // 初始化为1
-        for (int i = 1; i < N; i++)
+        for (int i = 0; i < N; i++)     // 如果i从1开始，需要max_len初始化为1, 否则不会更新
         {
             for (int j = i - 1; j >= 0; j--)
             {
@@ -71,14 +71,13 @@ public:
         return result;
     }
 
-    int findNumberOfLIS(vector<int>& nums) {
-       
-    }
 };
 // @lc code=end
 
 int main(){
     Solution s;
-    vector<int> nums = {1 ,3, 5, 4, 7, 7, 8};
+    // vector<int> nums = {1 ,3, 5, 4, 7, 7, 8};
+    vector<int> nums = {1 }; // ,3, 5, 4, 7, 7, 8};
+
     cout <<  s.findNumberOfLIS(nums) << endl;
 }

@@ -34,7 +34,7 @@ public:
         visited[row][col] = false;
     }
 
-    bool exist(vector<vector<char> >& board, string word) {
+    bool exist_(vector<vector<char> >& board, string word) {
         if (board.empty() || board[0].empty() || word.empty()) return false;
         int m = board.size(), n = board[0].size();
         vector<vector<bool> > visited(m, vector<bool>(n, false));
@@ -49,6 +49,16 @@ public:
         // dfs(board, visited, word, 0, 0, 0, found);  
         return found;
     }
+
+    void backtrace(vector<vector<char> >& board)
+    {
+
+    }
+
+    bool exist(vector<vector<char> >& board, string word) {
+
+    }
+
 };
 // @lc code=end
 

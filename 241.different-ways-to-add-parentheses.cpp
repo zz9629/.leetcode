@@ -75,11 +75,15 @@ public:
         return dp[left][right];
     }
 
-    vector<int> diffWaysToCompute(string expression) {
+    vector<int> diffWaysToCompute_(string expression) {
         int n = expression.length();
         vector<vector<vector<int>>> dp(n, vector<vector<int>>(n, vector<int>()));
         return diffWays(expression, 0, n - 1, dp);
     }
+
+    vector<int> diffWaysToCompute(string expression) {
+    }
+
 };
 // @lc code=end
 

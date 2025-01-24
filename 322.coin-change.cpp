@@ -33,7 +33,7 @@ public:
     }
 
     // 空间压缩
-    int coinChange(vector<int>& coins, int amount) {
+    int coinChange__(vector<int>& coins, int amount) {
         if (amount == 0) return 0;
         if (coins.empty()) return -1;
         int n = coins.size();
@@ -49,6 +49,13 @@ public:
 
         return dp[amount] == amount + 1 ? -1 : dp[amount];
     }
+
+
+
+    int coinChange(vector<int>& coins, int amount) {
+        // 注意dp的初始值
+    }
+
 };
 // @lc code=end
 

@@ -8,7 +8,7 @@
 #include <cstdio>
 class Solution {
 public:
-    int wiggleMaxLength(vector<int>& nums) {
+    int wiggleMaxLength_(vector<int>& nums) {
         /*
         For every position in the array, there are only three possible statuses for it.
             up position, it means nums[i] > nums[i-1]
@@ -21,7 +21,6 @@ public:
         if (nums.size() == 1) return 1;
         int up = 1, down = 1;
 
-        int res = 0;
         for (int i = 1; i < nums.size(); i++)
         {
             if (nums[i] > nums[i - 1])
@@ -36,6 +35,13 @@ public:
 
         return max(up, down);
     }
+
+
+
+    int wiggleMaxLength(vector<int>& nums) {
+   
+    }
+
 };
 // @lc code=end
 

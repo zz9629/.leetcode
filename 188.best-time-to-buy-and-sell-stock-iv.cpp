@@ -4,6 +4,13 @@
  * [188] Best Time to Buy and Sell Stock IV
  */
 
+/*
+121. Best Time to Buy and Sell Stock
+309. Best Time to Buy and Sell Stock with Cooldown
+714. Best Time to Buy and Sell Stock with Transaction Fee
+123. Best Time to Buy and Sell Stock III
+188. Best Time to Buy and Sell Stock IV
+*/
 
 #include "vector"
 #include <cstddef>
@@ -44,7 +51,7 @@ public:
         return sell;
     }
 
-    int maxProfit(int k, vector<int>& prices) {
+    int maxProfit_(int k, vector<int>& prices) {
         int n = prices.size();
         if (k * 2 >= n)
         {
@@ -66,6 +73,7 @@ public:
         }
         return sell[k];
 
+        // 二维
         // vector< vector<int>> buy(n + 1, vector<int>(k + 1, INT_MIN));
         // vector< vector<int>> sell(n + 1, vector<int>(k + 1, 0));
         // for (int i = 1; i <= n; i++)
@@ -80,6 +88,23 @@ public:
 
         // return sell[n][k];
     }
+
+    int maxProfit(int k, vector<int>& prices) {
+        int n = prices.size();
+        if (2 * k >= n) return maxProfitUnlimited(prices);
+        vector<int> buy(k + 1, INT_MIN);
+        vector<int> sell(k + 1, 0);
+        for (auto& num: prices)
+        {
+            for (int i = 1; i <= k; i++)
+            {
+                buy[i] = max(buy[i], sell[i - 1] - num);
+                sell[i] = max(sell[i], buy[i] + num);
+            }
+        }
+        return sell[k];
+    }
+
 };
 // @lc code=end
 

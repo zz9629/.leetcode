@@ -36,7 +36,7 @@ public:
     }
 
     int maxSubArray(vector<int>& nums) {
-
+        // 写出2d以及空间压缩后的1d
     }
 
 };

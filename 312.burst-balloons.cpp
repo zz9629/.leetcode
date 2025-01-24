@@ -31,7 +31,7 @@ public:
         return res;
     }
 
-    int maxCoins(vector<int>& nums) {
+    int maxCoins_(vector<int>& nums) {
         int n = nums.size();
         std::vector<int> ballons(n + 2, 1);
         for (int i = 0; i < n; i++)
@@ -42,6 +42,15 @@ public:
         vector<vector<int>> dp(n + 2, vector<int>(n + 2, -1));
         return burst(ballons, 0, ballons.size() - 1, dp);
     }
+
+    int burstBallon(vector<int>& ballons, int left, int right, vector<vector<int>>& dp)
+    {
+  
+    }
+
+    int maxCoins(vector<int>& nums) {
+    }
+
 };
 // @lc code=end
 

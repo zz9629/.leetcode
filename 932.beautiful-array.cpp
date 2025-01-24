@@ -26,8 +26,8 @@ public:
         }
         else 
         {
-            auto l = beautifulArray((n + 1) / 2);
-            auto r = beautifulArray(n / 2);
+            auto l = beautifulArray_tomDown((n + 1) / 2);
+            auto r = beautifulArray_tomDown(n / 2);
             for (auto & item: l)
             {
                 res.push_back(2 * item - 1);
@@ -64,7 +64,7 @@ public:
     }
 
     vector<int> beautifulArray(int n) {
-        
+
     }
 };
 // @lc code=end
