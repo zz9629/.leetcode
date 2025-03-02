@@ -87,11 +87,27 @@ public:
         return ans;
     }
 
+    int extend(string & s, int l, int r)
+    {
+        int count = 0;
+        while (l >= 0 && r < s.length() && s[l] == s[r])
+        {
+            count++;
+            l--;
+            r++;
+        }
+        return count;
+    }
 
+    // 更快 time complexity (O(n2)): worst case
     int countSubstrings(string s) {
-    
-    
-    
+        int count = 0;
+        for (int i = 0; i < s.length(); i++)
+        {
+            count += extend(s, i, i);
+            count += extend(s, i, i + 1);
+        }
+        return count;
     }
 
 };

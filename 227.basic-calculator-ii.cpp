@@ -78,8 +78,31 @@ public:
         return result += lastNumber;
     }
 
-
+    void update(vector<int>& values, int num, char sign)
+    {
+        if (sign == '+') values.push_back(num);
+        else if (sign == '-') values.push_back(-num);
+        else if (sign == '*') values.back() *= num;
+        else if (sign == '/') values.back() /= num;
+    }
+    
     int calculate(string s) {
+        int result = 0;
+        char sign = '+';
+        long long currentNum = 0;
+        vector<int> plate;
+        for (int i = 0; i < s.length(); i++)
+        {   
+            if (s[i] == ' ') continue;
+            if (isDigit(s[i])) currentNum = currentNum * 10 + s[i] - '0';
+            else {
+                update(plate, currentNum, sign);
+                sign = s[i];
+                currentNum = 0;
+            }
+        }        
+        update(plate, currentNum, sign);
+        return accumulate(plate.begin(), plate.end(), 0);
     }
 
 };

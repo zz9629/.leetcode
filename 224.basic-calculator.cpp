@@ -99,44 +99,32 @@ public:
 
     int calculate_helper(string& s, int start, int& end) {
         vector<int> values;
-        int num = 0;
+        long long num = 0;
         char sign = '+';
+        string op = "+-*/";
         for (int i = start; i < s.length(); i++)
         {
             if (s[i] == ' ') continue;
-            if (isDigit(s[i]))
+            if (isDigit(s[i])) num = num * 10 + s[i] - '0';
+            else if (find(op.begin(), op.end(), s[i]) != op.end())
             {
-                long long cur = s[i] - '0';
-                while (i + 1 < s.length() && isDigit(s[i + 1]))
-                {
-                    cur = cur * 10 + s[i + 1] - '0';
-                    i++;
-                }
-                num = cur;
+                update(values, num, sign);
+                sign = s[i];
+                num = 0;
             }
-            else 
+            else if (s[i] == '(') 
             {
-                string op = "+-*/";
-                if (find(op.begin(), op.end(), s[i]) != op.end())
-                {
-                    update(values, num, sign);
-                    sign = s[i];
-                    num = 0;
-                }
-                if (s[i] == '(') 
-                {
-                    int end = i;
-                    // 注意i + 1
-                    // 返回值给num
-                    num = calculate_helper(s, i + 1, end); 
-                    i = end;
-                }
-                else if (s[i] == ')')
-                {
-                    end = i;
-                    update(values, num, sign); // 返回前更新一下
-                    return accumulate(values.begin(), values.end(), 0);
-                }
+                int end = i;
+                // 注意i + 1
+                // 返回值给num
+                num = calculate_helper(s, i + 1, end); 
+                i = end;
+            }
+            else if (s[i] == ')')
+            {
+                end = i;
+                update(values, num, sign); // 返回前更新一下
+                return accumulate(values.begin(), values.end(), 0);
             }
         }
         update(values, num, sign); // 返回前更新一下

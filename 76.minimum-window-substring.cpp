@@ -26,7 +26,40 @@ public:
         the longest substring with at most two distinct characters is "cbebebe," 
         which has a length of 7.
     */
+
     string longestKSubstr(string s, int k)
+    {
+        unordered_map<char, int> chars;
+        int left = 0, right = 0;
+        int max_len = 0;
+        string res;
+        int count = 0;
+
+        while (right < s.length())
+        {
+            if (chars[s[right]] == 0) count++;
+            chars[s[right]]++;
+            right++;
+
+            while (count > k)
+            {
+                chars[s[left]]--;
+                if ( chars[s[left]] == 0) count--;
+                left++;
+            }
+
+            if (right - left > max_len)
+            {
+                max_len = right - left;
+                res = s.substr(left, max_len);
+            }
+
+        }
+        return res;
+    }
+
+
+    string longestKSubstr__(string s, int k)
     {
         int left = 0, right = 0;
         int res_left = 0, res_len = 0;
@@ -160,78 +193,8 @@ public:
         return min_size > s.size() ? "" : s.substr(min_left, min_size);
     }
 
-    string minWindow__(string s, string t) {
-        unordered_map<char, int> chars;
-        for (auto c : t)
-        {
-            chars[c]++;
-        }
-        int left = 0, right = 0;
-        int min_left = 0, min_len = s.size() + 1;
-        int counter = t.size();
-
-        while (right < s.size())
-        {
-            auto c = s[right];
-            if (chars[c] > 0) 
-            {
-                counter--;
-            }
-            chars[c]--;
-            right++;
-            while (counter == 0) 
-            {
-                if (right - left < min_len)
-                {
-                    min_len = right - left;
-                    min_left = left;
-                }
-                chars[s[left]]++;
-                if (chars[s[left]] > 0)
-                {
-                    counter++;
-                }
-                left++;
-            }
-
-        }
-        return min_len > s.size() ? "" : s.substr(min_left, min_len);
-    }
-
-
-
-
-
-
-
     string minWindow(string s, string t) {
-        int left = 0, right = 0;
-        int counter = t.size();
-        unordered_map<char, int> chars;
-
-        int min_left = 0, min_len = s.size() + 1;
-        for (auto c : t)
-        {
-            chars[c]++;
-        }
-        while (right < s.size())
-        {
-            if (chars[s[right]] > 0) counter--;
-            chars[s[right]]--;
-            right++;
-            while (counter == 0)
-            {
-                if (chars[s[left]] >= 0) counter++;
-                chars[s[left]]++;
-                if (right - left < min_len) 
-                {
-                    min_len = right - left;
-                    min_left = left;
-                }
-                left++;
-            }
-        }
-        return min_len > s.size() ? "" : s.substr(min_left, min_len);
+        return "";
     }
 };
 // @lc code=end
@@ -248,4 +211,5 @@ int main()
     cout << s.longestKSubstr("eceba", 2) << endl;
     cout << s.longestKSubstr("aa", 1) << endl;
 
+    return 0;
 }

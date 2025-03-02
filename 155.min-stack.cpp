@@ -8,7 +8,45 @@
 using namespace std;
 
 // @lc code=start
+
 class MinStack {
+public:
+    MinStack() {
+    }
+
+    void push(int val) {
+        if (min_.empty() || min_.top() >= val)
+        {
+            min_.push(val);
+        }
+        data.push(val);
+    }
+
+    void pop() {
+        if (data.empty()) return;
+        if (min_.top() == data.top())
+        {
+            min_.pop();
+        }
+        data.pop();
+    }
+
+    int top() {
+        if (data.empty()) return -1;
+        return data.top();
+    }
+
+    int getMin() {
+        if (min_.empty()) return -1;
+        return min_.top();
+    }
+
+    stack<int> data;
+    stack<int> min_;
+};
+
+/*
+class MinStack_ {
 public:
     MinStack() {
 
@@ -43,6 +81,8 @@ public:
     stack<pair<int, int>> data; // value, last_min
     int min_val = INT_MAX;
 };
+
+*/
 
 /**
  * Your MinStack object will be instantiated and called as such:

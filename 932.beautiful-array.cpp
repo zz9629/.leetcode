@@ -11,7 +11,7 @@ class Solution {
 public:
     std::unordered_map<int, vector<int>> memo;
 
-    vector<int> beautifulArray_tomDown(int n) {
+    vector<int> beautifulArray_topDown(int n) {
         if (memo.find(n) != memo.end()) 
         {
             return memo[n];
@@ -26,8 +26,8 @@ public:
         }
         else 
         {
-            auto l = beautifulArray_tomDown((n + 1) / 2);
-            auto r = beautifulArray_tomDown(n / 2);
+            auto l = beautifulArray_topDown((n + 1) / 2);
+            auto r = beautifulArray_topDown(n / 2);
             for (auto & item: l)
             {
                 res.push_back(2 * item - 1);

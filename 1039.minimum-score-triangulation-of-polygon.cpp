@@ -5,21 +5,24 @@
  */
 
 // @lc code=start
+#include <climits>
 class Solution {
 public:
     int helper(vector<int>& values, vector<vector<int>>& memo, int left, int right)
     {
-        if (left + 1 == right) return 0;
+        if (left + 1 >= right) return 0;
         if (memo[left][right] != -1) return memo[left][right];
-        int result = INT_MAX;
+        int res = INT_MAX;
         for (int mid = left + 1; mid < right; mid++)
         {
-            result = min(result, values[left] * values[mid] * values[right] + 
+            int temp = values[left] * values[right] * values[mid] + 
                     helper(values, memo, left, mid) + 
-                    helper(values, memo, mid, right));
+                    helper(values, memo, mid, right);
+            res = min(res, temp);
         }
-        memo[left][right] = result;
-        return result;
+
+        memo[left][right] = res;
+        return res;
     }
 
     int minScoreTriangulation(vector<int>& values) {

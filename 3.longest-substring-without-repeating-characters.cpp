@@ -93,7 +93,7 @@ public:
         return max_len;
     }
 
-    int lengthOfLongestSubstring(string s) {
+    int lengthOfLongestSubstring___(string s) {
         int left = 0, right = 0;
         unordered_map<char, int> chars;
         int len = s.length();
@@ -115,6 +115,18 @@ public:
         }
         return max_len;
     }
+
+    int lengthOfLongestSubstring(string s) {
+         
+    }
+
 };
 // @lc code=end
 
+int main()
+{
+
+    Solution s;
+    s.lengthOfLongestSubstring("abcbb");
+    return 0;
+}

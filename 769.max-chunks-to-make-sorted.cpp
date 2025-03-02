@@ -36,9 +36,11 @@ public:
             int max_val = arr[start_pos]; // 合法再取值
             for (int i = start_pos + 1; i < n; i++)
             {
+                // 如果小于当前窗口内的最大值
                 if (arr[i] < max_val)
                 {
                     end_pos = i;
+                    // 更新最大值
                     max_val = find_max(arr, start_pos, end_pos);
                 }
             }
@@ -64,7 +66,7 @@ public:
     }
 
     int maxChunksToSorted(vector<int>& arr) {
-   
+    
     }
 };
 // @lc code=end
