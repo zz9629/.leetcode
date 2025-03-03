@@ -37,16 +37,16 @@ public:
     }
 
     ListNode *detectCycle_(ListNode *head) {
-        if (!head || !head->next || !head->next->next) return nullptr;
-        auto slow = head->next;
-        auto fast = head->next->next;
-        while (fast && fast->next)
+        if (!head || !head->next) return nullptr;
+        ListNode* slow = head, *fast = head->next;
+        while (slow && fast)
         {
-            if (slow == fast) break;
             slow = slow->next;
             fast = fast->next->next;
+            if (slow == fast) break;
         }
-        if (!fast || !fast->next) return nullptr;
+        if (!fast) return nullptr;
+
         fast = head;
         while (slow != fast)
         {
