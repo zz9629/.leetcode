@@ -12,7 +12,7 @@ class Solution {
 public:
     // 完全背包，价值在外正向，物品在内
     // 二维
-    int numSquares_(int n) {
+    int numSquares__(int n) {
         int num = sqrt(n);
         vector<vector<int> > dp(num + 1, vector<int> (n + 1, n + 1));
         for (int j = 1; j <= n; j++)
@@ -26,8 +26,8 @@ public:
     }
 
     // 压缩到一维
-    int numSquares(int n) {
-        vector<int> dp(n + 1, 0);
+    int numSquares_(int n) {
+        vector<int> dp(n + 1, 0);   // 初始化为0, 主要是dp[0] = 0 比较重要
         for (int i = 1; i <= n; i++)
         {
             dp[i] = i;
@@ -40,7 +40,8 @@ public:
         return dp[n];
     }
 
-
+    int numSquares(int n) {
+    }
 };
 
 // @lc code=end

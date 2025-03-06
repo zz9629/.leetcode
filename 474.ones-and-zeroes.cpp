@@ -47,7 +47,7 @@ public:
         return dp[size][m][n];
     }
 
-    int findMaxForm(vector<string>& strs, int m, int n) {
+    int findMaxForm__(vector<string>& strs, int m, int n) {
         vector<vector<int> > dp(m + 1, vector<int>(n + 1, 0));
         for (auto& str : strs)
         {
@@ -63,6 +63,15 @@ public:
         }
         return dp[m][n];
     }
+
+
+
+
+
+    int findMaxForm(vector<string>& strs, int m, int n) {
+
+    }
+
 
 };
 // @lc code=end

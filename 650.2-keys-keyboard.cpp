@@ -7,7 +7,8 @@
 // @lc code=start
 class Solution {
 public:
-    int minSteps(int n) {
+    int minSteps_(int n) {
+        // vector<int> dp(n + 1, 0); 初始化为0也可以
         vector<int> dp(n + 1, n);
         dp[0] = dp[1] = 0; // initial with 0 is ok
         for (int i = 2; i <= n; i++)
@@ -23,6 +24,11 @@ public:
         }
         return dp[n];
     }
+
+
+    int minSteps(int n) {
+    }
+
 };
 // @lc code=end
 

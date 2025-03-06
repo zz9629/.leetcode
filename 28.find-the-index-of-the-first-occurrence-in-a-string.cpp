@@ -9,7 +9,8 @@ using namespace std;
 // @lc code=start
 class Solution {
 public:
-    void calLsp(const string& needle, vector<int>& next)
+    // Longest Prefix Suffix 
+    void calLps(const string& needle, vector<int>& next)
     {   
         int p = -1;
         // 计算next[j]的值
@@ -28,98 +29,34 @@ public:
     }
          
 
-    int strStr_(string haystack, string needle) {
-        if (needle.empty()) return -1;
-        int k = -1;
-        int n = haystack.length(), p = needle.length();
-        vector<int> next(needle.length(), -1);  // Longest Prefix Suffix 
-        calLsp(needle, next);
-
-        for (int i = 0; i < haystack.length(); i++)
-        {
-            while (k > -1 && needle[k + 1] != haystack[i])
-            {
-                k = next[k]; // 部分匹配，往前回溯
-            }
-
-            if (needle[k + 1] == haystack[i])
-            {
-                k++;
-            }
-
-            if (k == p - 1)
-            {
-                return i - p + 1;
-            }
-        }
-
-        return -1;
-    }
-
-    void getLsp(string & needle, vector<int> & lsp)
-    {
-        int p = -1;
-        for (int i = 1; i < needle.length(); i++)
-        {
-            while (p > - 1 && needle[p + 1] != needle[i])
-            {
-                p = lsp[p];
-            }
-            if (needle[p + 1] == needle[i])
-            {
-                p++;
-            }
-            lsp[i] = p;
-        }
-    }
-    
     // haystack = "ababcabcabababd", needle = "ababd"
-    int strStr__(string haystack, string needle) {
-        if (needle.empty()) return -1;
-        int j = -1;        
-        vector<int> lsp(needle.length(), -1);
-        getLsp(needle, lsp);
+    int strStr_(string haystack, string needle) {
+        if (needle.length() > haystack.length()) return -1;
+        vector<int> lps(needle.length(), -1);
+        calLps(needle, lps); // 用lps，否则容易将next和needle写混
+
+        int pos = -1;
         for (int i = 0; i < haystack.length(); i++)
         {
-            while (j > - 1 && needle[j + 1] != haystack[i])
+            while (pos > -1 && needle[pos + 1] != haystack[i])
             {
-                j = lsp[j];
+                pos = lps[pos];  // 部分匹配，往前回溯
             }
-            if (needle[j + 1] == haystack[i])
+            if (needle[pos + 1] == haystack[i])
             {
-                j++;
+                pos++;
             }
-            if (j == needle.length() - 1)
+            if (pos == needle.length() - 1)
             {
-                return i - j;
+                return i - pos;
             }
         }
         return -1;
     }
 
     int strStr(string haystack, string needle) {
-        vector<int> lps(needle.length(), -1);
-        calLsp(needle, lps);
-        int j = -1;
-        for (int i = 0; i < haystack.length(); i++)
-        {
-            while (j > -1 && needle[j + 1] != haystack[i])
-            {
-                j = lps[j];
-            }
-            if (needle[j + 1] == haystack[i])
-            {
-                j++;
-            }
-            if (j == needle.length() - 1)
-            {
-                return i - j;
-            }
-        }
-        return -1;
-    }
     
-
+    }
 };
 // @lc code=end
 

@@ -29,6 +29,7 @@ Output: 23
 #include "stack"
 #include "iostream"
 #include <numeric>
+#include <valarray>
  using namespace std;
 // @lc code=start
 class Solution {
@@ -136,6 +137,49 @@ public:
         return calculate_helper(s, 0, end);
     }
     // -------------------------------------------------------------------------
+
+
+    int helper(string & s, int start, int & end)
+    {
+        vector<int> values;
+        long long num = 0;
+        char sign = '+';
+        string ops = "+-*/";
+        for (int i = start; i < s.length(); i++)
+        {
+            char ch = s[i];
+            if (ch == ' ') continue;
+            else if (ch >= '0' && ch <= '9') num = num * 10 + ch - '0';
+            else if (find(ops.begin(), ops.end(), ch) != ops.end())
+            {
+                update(values, num, sign);
+                sign = ch;
+                num = 0;
+            }
+            else if (ch == '(')
+            {
+                int j = i;
+                num = helper(s, i + 1, j);
+                i = j;
+            }
+            else if (ch == ')')
+            {
+                end = i;
+                update(values, num, sign);
+                return accumulate(values.begin(), values.end(), 0);
+            }
+        }
+
+        update(values, num, sign);
+        return accumulate(values.begin(), values.end(), 0);
+    }
+
+
+    int calculate(string& s) {
+        int end;
+        return helper(s, 0, end);
+    }
+
 };
 // @lc code=end
 

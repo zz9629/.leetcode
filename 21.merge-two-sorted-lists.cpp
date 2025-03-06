@@ -52,7 +52,7 @@ public:
     }
 
     // recursive
-    ListNode* mergeTwoLists(ListNode* list1, ListNode* list2) 
+    ListNode* mergeTwoLists__(ListNode* list1, ListNode* list2) 
     {
         if (!list1) return list2;
         if (!list2) return list1;
@@ -73,6 +73,10 @@ public:
         return head;
     }
 
+    ListNode* mergeTwoLists(ListNode* list1, ListNode* list2) 
+    {
+        
+    }
 };
 // @lc code=end
 

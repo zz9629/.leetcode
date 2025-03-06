@@ -10,7 +10,7 @@ using namespace std;
 // @lc code=start
 class Solution {
 public:
-    int countBinarySubstrings(string s) {
+    int countBinarySubstrings_(string s) {
         /*
 
         if (s.empty()) return 0;
@@ -53,6 +53,12 @@ public:
         }
         return result += min(cur, pre);
     }
+
+
+    int countBinarySubstrings(string s) {
+
+    }
+
 };
 // @lc code=end
 

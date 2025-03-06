@@ -86,6 +86,7 @@ public:
 
         int end = 0;
         int start = -1;
+        // 从0开始，input "caedbdedda“，output [1,9]
         for (int i = 0; i < len; i++)
         {
             char c = s[i];
@@ -101,45 +102,28 @@ public:
         return result;
     }
 
-    vector<int> partitionLabel_s(string s) {
-        vector<int> result;
-        unordered_map<char, int> lastPos;
-        for (int i = 0; i < s.size(); i++)
-        {
-            lastPos[s[i]] = i;
-        }
-
-        int end = 0, start = -1;
-        for (int i = 0; i < s.size(); i++)
-        {
-            end = max(end, lastPos[s[i]]);
-            if (end == i) {
-                result.push_back(end - start);
-                start = end;
-            }
-        }
-        return result;
-    }
-
     vector<int> partitionLabels(string s) {
-        unordered_map<char, int> lastPos;
-        for (int i = 0; i < s.size(); i++)
-        {
-            lastPos[s[i]] = i;
-        }
-
         vector<int> result;
-        int start = -1, end = 0;
-        for (int i = 0; i < s.size(); i++)
+        if (s.empty()) return result;
+        unordered_map<char, int> pos;
+        for (int i = 0; i < s.length(); i++)
         {
-            end = max(end, lastPos[s[i]]);
-            if (i == end) {
+            pos[s[i]] = i;
+        }
+        int start = -1;
+        int end = 0;
+        for (int i = 0; i < s.length(); i++)
+        {
+            end = max(end, pos[s[i]]);
+            if (i == end)
+            {
                 result.push_back(end - start);
                 start = end;
             }
         }
         return result;
     }
+
 };
 // @lc code=end
 

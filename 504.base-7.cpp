@@ -31,7 +31,7 @@ public:
 
 
     string convertToBase7__(int num) {
-   
+        return "";
     }
 
 };

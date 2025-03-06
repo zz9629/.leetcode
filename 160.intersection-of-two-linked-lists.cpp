@@ -44,7 +44,7 @@ public:
     }
 
     // better idea
-    ListNode *getIntersectionNode(ListNode *headA, ListNode *headB) {
+    ListNode *getIntersectionNode__(ListNode *headA, ListNode *headB) {
         auto l1 = headA, l2 = headB;
         while (l1 != l2)
         {
@@ -52,6 +52,11 @@ public:
             l2 = l2 ? l2->next : headA;
         }
         return l1;
+    }
+
+    ListNode *getIntersectionNode(ListNode *headA, ListNode *headB)
+    {
+
     }
 
 };

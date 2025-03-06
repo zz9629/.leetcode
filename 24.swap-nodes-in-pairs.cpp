@@ -36,7 +36,7 @@ public:
     }
 
     // non-recursive
-    ListNode* swapPairs(ListNode* head) {
+    ListNode* swapPairs__(ListNode* head) {
         if (!head || !head->next) return head;
         ListNode* dummy = new ListNode(-1);
         ListNode* pre = dummy;
@@ -55,6 +55,9 @@ public:
         }
 
         return dummy->next;
+    }
+
+    ListNode* swapPairs(ListNode* head) {
     }
 
 };

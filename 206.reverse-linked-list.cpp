@@ -56,9 +56,9 @@ public:
     }
 
 
+    
     ListNode* reverseList(ListNode* head) {
-        
-        return nullptr;
+    
     }
 
 };

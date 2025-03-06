@@ -21,6 +21,12 @@ public:
         }
         return dp[target];
     }
+
+
+
+    int combinationSum4(vector<int>& nums, int target) {
+    
+    }
 };
 // @lc code=end
 

@@ -57,7 +57,7 @@ public:
     }
 
     int countPrimes(int n) {
-
+        return -1;
     }
 };
 // @lc code=end

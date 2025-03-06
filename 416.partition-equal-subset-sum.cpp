@@ -31,7 +31,7 @@ public:
     }
 
 
-    bool canPartition(vector<int>& nums) {
+    bool canPartition__(vector<int>& nums) {
         int sum = accumulate(nums.begin(), nums.end(), 0);
         if (sum % 2) return false;
         int target = sum / 2;
@@ -46,6 +46,24 @@ public:
         }
         return dp[target];
     }
+
+    bool canPartition(vector<int>& nums) {
+        int sum = accumulate(nums.begin(), nums.end(), 0);
+        if(sum % 2) return false;
+        sum /= 2;
+        // 0 1 背包
+        vector<int> dp(sum + 1, false);
+        dp[0] = true;
+        for (auto & num: nums)
+        {
+            for (int i = sum; i >= num; i--)
+            {
+                dp[i] = dp[i] || dp[i - num];
+            }
+        }
+        return dp[sum];
+    }
+
 
 };
 // @lc code=end
