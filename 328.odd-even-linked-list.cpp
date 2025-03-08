@@ -62,6 +62,7 @@ public:
         auto odd = head;
         auto even = head->next;
         auto even_start = even;
+        // 注意odd和even的先后顺序
         while (odd->next && even->next)
         {
             odd->next = even->next;
@@ -77,7 +78,7 @@ public:
 
     
     ListNode* oddEvenList(ListNode* head) {
-
+        
     }
 
 };

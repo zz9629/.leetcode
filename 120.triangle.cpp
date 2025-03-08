@@ -32,7 +32,7 @@ public:
     }
 
     int minimumTotal(vector<vector<int> >& triangle) {
-    
+        
     }
 };
 // @lc code=end

@@ -40,7 +40,7 @@ public:
     // 没有扩充数组
     int findNumberOfLIS(vector<int>& nums) {
         int N = nums.size();
-        int max_len = 0;                
+        int max_len = 0;                // 注意[2, 2, 2, 2] 的情况，output应该为1
         vector<int> dp(N, 1);      // 初始化为1
         vector<int> count(N, 1);   // 初始化为1
         for (int i = 0; i < N; i++)     // 如果i从1开始，需要max_len初始化为1, 否则不会更新
@@ -60,7 +60,7 @@ public:
                     }
                 }
             }
-            max_len = max(max_len, dp[i]); // 最长的长度
+            max_len = max(max_len, dp[i]); // 最长的长度，注意更新的位置
         }
 
         int result = 0;

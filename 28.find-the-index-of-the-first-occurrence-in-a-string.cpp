@@ -10,7 +10,7 @@ using namespace std;
 class Solution {
 public:
     // Longest Prefix Suffix 
-    void calLps(const string& needle, vector<int>& next)
+    void calLps_(const string& needle, vector<int>& next)
     {   
         int p = -1;
         // 计算next[j]的值
@@ -28,7 +28,6 @@ public:
         }
     }
          
-
     // haystack = "ababcabcabababd", needle = "ababd"
     int strStr_(string haystack, string needle) {
         if (needle.length() > haystack.length()) return -1;
@@ -54,8 +53,14 @@ public:
         return -1;
     }
 
+
+
+    void calLps(string& needle, vector<int>& lps)
+    {
+    }
+
     int strStr(string haystack, string needle) {
-    
+        return -1;
     }
 };
 // @lc code=end

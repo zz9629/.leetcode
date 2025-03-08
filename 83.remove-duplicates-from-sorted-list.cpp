@@ -36,6 +36,7 @@ public:
                 auto del = cur->next;
                 cur->next = cur->next->next;
                 delete del;
+                // 这里不要直接返回，可以有多个dupllicate numbers
             }
             else
             {
@@ -47,7 +48,8 @@ public:
     }
 
     ListNode* deleteDuplicates(ListNode* head) {
-    }
+       
+    }   
 };
 // @lc code=end
 

@@ -5,6 +5,7 @@
  */
 
 // @lc code=start
+#include <cmath>
 class Solution {
 public:
     bool isOut(int m, int n, int i, int j)
@@ -13,8 +14,9 @@ public:
         return true;
     }
 
-    int findPaths(int m, int n, int maxMove, int startRow, int startColumn) {
-        int mod = 1000000000 + 7;
+    int findPaths_(int m, int n, int maxMove, int startRow, int startColumn) {
+        int mod = std::pow(10, 9) + 7;
+        // int mod = 1000000000 + 7;
         vector<vector<vector<int>>> dp(maxMove + 1, vector<vector<int>>(m, vector<int>(n, 0)));
         vector<pair<int, int>> directions = {{-1, 0},  {1, 0}, {0, -1}, {0, 1}};
         for (int k = 1; k <= maxMove; k++) {
@@ -32,6 +34,15 @@ public:
         }
         return dp[maxMove][startRow][startColumn];
     }
+
+
+
+
+    int findPaths(int m, int n, int maxMove, int startRow, int startColumn) {
+
+
+    }
+
 };
 // @lc code=end
 

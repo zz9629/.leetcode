@@ -18,7 +18,7 @@ public:
         return true;
     }
 
-    double knightProbability(int n, int k, int row, int column) {
+    double knightProbability_(int n, int k, int row, int column) {
         if (k < 1) return 1;
         if (n < 3) return 0;
         vector<vector<vector<double>>> dp(k + 1, vector<vector<double>>(n, vector<double>(n, 0)));
@@ -54,7 +54,7 @@ public:
         */
 
         
-        vector<vector<vector<double>>> dp(k + 1, vector<vector<double>>(n, vector<double>(n, 0)));
+        // vector<vector<vector<double>>> dp(k + 1, vector<vector<double>>(n, vector<double>(n, 0)));
         // dp[1] = memo;
         // for (int i = 0; i < n; i++) {
         //     for (int j = 0; j < n; j++) {
@@ -99,6 +99,13 @@ public:
         }
         return dp[k][row][column];
     }
+
+
+
+    double knightProbability(int n, int moves, int row, int column) {
+        // 注意输入数据
+    }
+
 };
 // @lc code=end
 
