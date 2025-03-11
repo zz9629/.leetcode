@@ -64,6 +64,8 @@ public:
     }
 
 private:    
+    // ！这里不要删除这个节点，只是更改链接关系 
+    // 移除的可能是中间节点
     void removeNode(Node* & node)
     {
         auto pre = node->pre;
@@ -72,9 +74,12 @@ private:
         pre->next = next;
         next->pre = pre;
 
+        // tail->pre = tail->pre->pre;
+        // tail->pre->pre->next = tail;
+        // delete node; // do not delete
     }
 
-    void addFirst(Node* & node)
+    void addFirst(Node*& node)
     {
         // empty
         if (head->next == tail)

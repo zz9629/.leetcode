@@ -53,14 +53,15 @@
     
         ListNode* sortList_(ListNode* head) {
             if(!head || !head->next) return head;
-            if (!head->next->next)
-            {
-                auto next = head->next;
-                if (head->val < next->val) return head;
-                next->next = head;
-                head->next = nullptr;
-                return next;
-            }
+            // 这段不需要
+            // if (!head->next->next)
+            // {
+            //     auto next = head->next;
+            //     if (head->val < next->val) return head;
+            //     next->next = head;
+            //     head->next = nullptr;
+            //     return next;
+            // }
             auto slow = head;
             auto fast = head;
             auto temp = head;

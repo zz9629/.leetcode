@@ -38,6 +38,7 @@ public:
                 delete del;
                 // 这里不要直接返回，可以有多个dupllicate numbers
             }
+            // 这里必须要用else，避免遇到连续的duplicate，如[1,1,1]
             else
             {
                 cur = cur->next;
@@ -49,6 +50,7 @@ public:
 
     ListNode* deleteDuplicates(ListNode* head) {
        
+       return head;
     }   
 };
 // @lc code=end

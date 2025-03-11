@@ -10,6 +10,9 @@ using namespace std;
 // @lc code=start
 class Solution {
 public:
+    // 1, 2, 3
+    // 2, 3, 1
+    // 1, 1, 2
     int findMin_(vector<int>& nums) {
         int left = 0, right = nums.size() - 1;
         // int minimal = INT_MAX;
@@ -31,7 +34,7 @@ public:
         return nums[left];
     }
 
-    int findMin(vector<int>& nums) {
+    int findMin__(vector<int>& nums) {
         int left = 0, right = nums.size() - 1;
         while (left < right){
             int mid = left + (right - left) / 2;
@@ -47,6 +50,11 @@ public:
         return nums[left];
     }
     
+    int findMin(vector<int>& nums) {
+       
+    }
+
+
 };
 // @lc code=end
 

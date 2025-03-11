@@ -149,19 +149,21 @@ public:
     }
 
     string minWindow_(string s, string t) {
-        // 统计需要的个数
+        // 统计需要的个数，取值的时候不要把left和right弄混
         unordered_map<char, int> chars;
         for (auto c : t){
             chars[c]++;
         }
         // right to find valid window, left to find smaller window
         int left = 0, right = 0;
+        // 注意min_size取的是s的长度，而不是t的长度
         int min_left = 0, min_size = s.size() + 1; // record
         // counter represents the number of chars of t to be found in s.
         int counter = t.size();  // 剪枝
         int size = s.size();
 
        	// Move end to find a valid window.
+        // 可以换成while (right < s.length()) ，在里面right++, 长度计算为rihgt-left
         for (right = 0; right < size; right++)
         {
             // If char in s exists in t, decrease counter
@@ -194,7 +196,37 @@ public:
     }
 
     string minWindow(string s, string t) {
-        return "";
+        unordered_map<char, int> chars;
+        for (auto & c : t)
+        {
+            chars[c]++;
+        }
+        int counter = t.size();
+
+        int left = 0;
+        int right = 0;
+        int min_len = s.size() + 1;
+        int pos = 0;
+        while (right < s.length())
+        {
+            if (chars[s[right]] > 0) counter--;
+            chars[s[right]]--;
+            right++;
+
+            while (counter == 0)
+            {
+                if (right - left < min_len)
+                {
+                    min_len = right - left;
+                    pos = left;
+                }
+                chars[s[left]]++;
+                if (chars[s[left]] > 0) counter++;
+                left++;
+            }
+        }
+
+        return min_len > s.size() ? "" : s.substr(pos, min_len);
     }
 };
 // @lc code=end
@@ -202,14 +234,14 @@ public:
 int main()
 {
     Solution s;
-    // cout << s.minWindow("ADOBECODEBANC", "ABC") << endl;
+    cout << s.minWindow("ABDCOBECODEBANC", "ABC") << endl;
     
     // auto res = s.longest2Substr("eceba");
     // cout << res << endl;
     // cout << s.longest2Substr("ccaabbb") << endl;
 
-    cout << s.longestKSubstr("eceba", 2) << endl;
-    cout << s.longestKSubstr("aa", 1) << endl;
+    // cout << s.longestKSubstr("eceba", 2) << endl;
+    // cout << s.longestKSubstr("aa", 1) << endl;
 
     return 0;
 }

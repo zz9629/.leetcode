@@ -16,7 +16,7 @@ public:
     }
 
     // 非递归
-    string convertToBase7(int num) {
+    string convertToBase7__(int num) {
         if (num == 0) return "0";
         string ans; 
         bool isNeg = num < 0;
@@ -29,9 +29,9 @@ public:
         return isNeg? "-" + ans : ans;
     }
 
+    string convertToBase7(int num) {
 
-    string convertToBase7__(int num) {
-        return "";
+
     }
 
 };

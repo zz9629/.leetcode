@@ -15,7 +15,7 @@ public:
         int n = s.size();
         s = " " + s;
         vector<int> dp(n + 1, 0);
-        dp[0] = 1;
+        dp[0] = 1; // 这里需要初始化
 
         for (int i = 1; i <= n; i++)
         {
