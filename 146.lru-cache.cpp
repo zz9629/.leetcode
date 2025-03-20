@@ -48,7 +48,7 @@ public:
                 auto tailNode = this->tail->pre;
                 removeNode(tailNode);
                 data.erase(tailNode->key);
-                delete tailNode; // 内存泄漏？
+                delete tailNode; // 内存泄漏
             }
             Node* node = new Node(key, value);
             addFirst(node);

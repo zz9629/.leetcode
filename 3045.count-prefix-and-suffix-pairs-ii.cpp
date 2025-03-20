@@ -63,7 +63,7 @@ public:
             auto cur = root.get();
             for (int i = 0; i < word.length(); i++)
             {
-                int key = (word[i] - 'a') * 26 + word[word.length() - 1 + i] - 'a';
+                int key = (word[i] - 'a') * 26 + word[word.length() - 1 - i] - 'a';
                 if (cur->children.find(key) == cur->children.end())
                 {
                     cur->children[key] = make_unique<Node>();

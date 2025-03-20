@@ -81,7 +81,7 @@ public:
         swap(nums[pos], nums[right]);
         // return partition(nums, left, right);
         int target = nums[right];
-        int j = left - 1;
+        int j = left - 1; // 注意left边界
         for (int i = left; i < right; i++)
         {
             if (nums[i] < target) 
