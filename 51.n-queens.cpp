@@ -59,7 +59,7 @@ public:
         }
     }
 
-    vector<vector<string> > solveNQueens(int n) {
+    vector<vector<string> > solveNQueens_(int n) {
         vector<vector<string> > results;
         if (!n) return results;
         vector<string> mat(n, string(n, '.'));
@@ -69,6 +69,21 @@ public:
         backTrace(results, mat, n, 0, column, r_dia, l_dia);
         return results;
     }
+
+
+    void backtrace(vector<vector<string> >& result, vector<string>& mat, int n, int row, 
+                    vector<int> & column,
+                    vector<int> & ldia,
+                    vector<int> & rdia)
+    {
+       
+    }
+
+
+    vector<vector<string> > solveNQueens(int n) {
+       
+    }
+
 };
 // @lc code=end
 

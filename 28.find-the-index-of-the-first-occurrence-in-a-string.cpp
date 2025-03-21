@@ -54,13 +54,12 @@ public:
     }
 
 
-
     void calLps(string& needle, vector<int>& lps)
     {
     }
 
-    int strStr(string haystack, string needle) {
-        return -1;
+    int strStr(string haystack, string needle)
+    {
     }
 };
 // @lc code=end
@@ -68,9 +67,9 @@ public:
 int main()
 {
     Solution s;
-    s.strStr_("ababcabcabababd", "ababd");
-    s.strStr_("AAA", "AAACAAAA");
-    // s.strStr("sadbutsad", "sasad");
+    s.strStr("ababcabcabababd", "ababd");
+    s.strStr("AAA", "AAACAAAA");
+    s.strStr("sadbutsad", "sad");
 
     return 0;
 }

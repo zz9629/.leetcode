@@ -17,6 +17,7 @@ public:
         if (heights.empty() || heights[0].empty()) return;
         int m = heights.size(), n = heights[0].size();
         if (row < 0 || row >= m || col < 0 || col >= n) return;
+        // 终止条件
         if (canVisit[row][col]) return;
         canVisit[row][col] = true;
         vector<pair<int, int>> directions = {{-1, 0}, {1, 0}, {0, 1}, {0, -1}};
@@ -32,7 +33,7 @@ public:
 
     }
 
-    vector<vector<int> > pacificAtlantic(vector<vector<int> >& heights) {
+    vector<vector<int> > pacificAtlantic_(vector<vector<int> >& heights) {
         if (heights.empty() || heights[0].empty()) return {};
         int m = heights.size(), n = heights[0].size();
         vector<vector<bool> > canPacific(m, vector<bool>(n, false)); 
@@ -60,6 +61,14 @@ public:
         }
         return result;
     }
+
+    void dfs(vector<vector<int> >& heights, vector<vector<bool> >& ocean, int m, int n, int row, int col)
+    {
+    }
+
+    vector<vector<int> > pacificAtlantic(vector<vector<int> >& heights) {
+    }
+
 };
 // @lc code=end
 

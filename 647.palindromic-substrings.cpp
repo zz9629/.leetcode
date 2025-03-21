@@ -100,7 +100,7 @@ public:
     }
 
     // 更快 time complexity (O(n2)): worst case
-    int countSubstrings(string s) {
+    int countSubstrings__(string s) {
         int count = 0;
         for (int i = 0; i < s.length(); i++)
         {
@@ -108,6 +108,15 @@ public:
             count += extend(s, i, i + 1);
         }
         return count;
+    }
+
+    int helper(string s, int left, int right)
+    {
+        
+    }
+
+    int countSubstrings(string s) {
+       
     }
 
 };
