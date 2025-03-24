@@ -63,31 +63,21 @@ public:
     // more concise
     int subarraySum_(vector<int>& nums, int k) {
         unordered_map<int,int> map;
-        
-        int sum = 0, result = 0;
-        map[sum] = 1;
-        
-        for (int n : nums) {
-            sum += n;
-            result += map[sum - k];
-            map[sum]++;
+        map[0] = 1;
+        int curSum = 0, result = 0;
+
+        for (int i = 0; i < nums.size(); i++)
+        {
+            curSum += nums[i];
+            result += map[curSum - k];
+            map[curSum]++;
         }
         
         return result;
     }
 
     int subarraySum(vector<int>& nums, int k) {
-        unordered_map<int, int> map;
-        int sum = 0;
-        int result = 0;
-        map[0] = 1;
-        for (auto& item: nums)
-        {
-            sum += item;
-            result += map[sum - k];
-            map[sum]++;
-        }
-        return result;
+       
     }
 
 };

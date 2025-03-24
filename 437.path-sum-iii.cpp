@@ -83,6 +83,7 @@ public:
         result += helper_(root->right, curSum, target, map);
         
         // Backtrack: decrement the frequency of the current cumulative sum
+        // 防止路径计算跨越不同的子树
         map[curSum]--;
 
         return result;
@@ -98,12 +99,12 @@ public:
 
 
 
-    int helper(TreeNode* root, long long curSum, int target, unordered_map<long long, int> & map)
-    {
-    }
+    
+
 
     int pathSum(TreeNode* root, int targetSum) 
     {
+
     }
 
 };

@@ -11,7 +11,7 @@ using namespace std;
 // @lc code=start
 class Solution {
 public:
-    vector<int> dailyTemperatures(vector<int>& temperatures) {
+    vector<int> dailyTemperatures_(vector<int>& temperatures) {
         stack<int> indices;
         vector<int> res(temperatures.size(), 0);
 
@@ -35,6 +35,31 @@ public:
         }
 
         return res;
+    }
+
+
+
+    vector<int> dailyTemperatures(vector<int>& temperatures) {
+        stack<int> cache;
+        vector<int> result(temperatures.size(), 0);
+
+        for (int i = 0; i < temperatures.size(); i++)
+        {
+            while (!cache.empty())
+            {
+                auto lastIndex = cache.top();
+                if (temperatures[i] <= temperatures[lastIndex]) 
+                {
+                    break;
+                }
+                cache.pop();
+                result[lastIndex] = i - lastIndex;
+            }
+
+            cache.push(i);
+        }
+    
+        return result;
     }
 
 };

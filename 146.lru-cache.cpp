@@ -27,11 +27,11 @@ public:
     }
     
     int get(int key) {
-        auto it = data.find(key);
-        if (it == data.end()) return -1;
+        auto it = map.find(key);
+        if (it == map.end()) return -1;
 
         // update list;
-        Node* node = data[key];
+        Node* node = map[key];
         removeNode(node);
         addFirst(node);
 
@@ -40,26 +40,26 @@ public:
     
     void put(int key, int value) {
         // in map, find it, re-arrange
-        auto it = data.find(key);
-        if (it == data.end()) 
+        auto it = map.find(key);
+        if (it == map.end()) 
         {
-            if (data.size() >= this->capacity)
+            if (map.size() >= this->capacity)
             {
                 auto tailNode = this->tail->pre;
                 removeNode(tailNode);
-                data.erase(tailNode->key);
+                map.erase(tailNode->key); // 这里删除的是tailNode->key不是key
                 delete tailNode; // 内存泄漏
             }
             Node* node = new Node(key, value);
             addFirst(node);
-            data[key] = node; // 更新
+            map[key] = node; // 更新
         }
         else 
         {
-            Node* node = data[key];
-            node->value = value; // 更新
+            auto node = map[key];
             removeNode(node);
             addFirst(node);
+            node->value = value;
         }
     }
 
@@ -102,7 +102,7 @@ private:
     }
 
     int capacity;
-    std::unordered_map<int, Node*> data;
+    std::unordered_map<int, Node*> map;
     Node* head, *tail;
 };
 

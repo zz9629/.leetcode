@@ -3,6 +3,7 @@
  *
  * [827] Making A Large Island
  */
+#include <algorithm>
 #include <iostream>
 #include <unordered_map>
 #include <unordered_set>
@@ -16,7 +17,7 @@ class Solution {
 public:
     vector<pair<int, int> > directions = {{-1, 0}, {1, 0}, {0, 1}, {0, -1}};
 
-    int getArea(vector<vector<int> >& grid, int i, int j, int color, int m, int n)
+    int getArea_(vector<vector<int> >& grid, int i, int j, int color, int m, int n)
     {
         if (i < 0 || i >= m || j < 0 || j >= n || grid[i][j] != 1) return 0;
         grid[i][j] = color;
@@ -28,7 +29,7 @@ public:
         return sum;
     }
 
-    int paintColor(vector<vector<int> >& grid, 
+    int paintColor_(vector<vector<int> >& grid, 
                     std::unordered_map<int, int> areas, 
                     int i, int j, int m, int n)
     {
@@ -52,7 +53,7 @@ public:
         return sum;
     }
 
-    int largestIsland(vector<vector<int> >& grid) {
+    int largestIsland_(vector<vector<int> >& grid) {
         if (grid.empty() || grid[0].empty()) return 0;
         int m = grid.size(), n = grid[0].size();
         int color = 2, result = 0;
@@ -84,6 +85,12 @@ public:
             }
         }
         return result;
+    }
+
+
+    int largestIsland(vector<vector<int> >& grid) {
+       
+        return 0;
     }
 
 };

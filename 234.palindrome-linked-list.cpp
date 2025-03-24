@@ -55,22 +55,6 @@ public:
     }
 
     bool isPalindrome(ListNode* head) {
-        if (!head || !head->next) return true;
-        auto slow = head, fast = head;
-        while (fast && fast->next)
-        {
-            fast = fast->next->next;
-            slow = slow->next;
-        }
-        slow = fast ? reverseList(slow->next) : reverseList(slow);
-        fast = head;
-        while (slow && fast)
-        {
-            if (slow->val != fast->val) return false;
-            slow = slow->next;
-            fast = fast->next;
-        }
-        return true;
     }
 };
 // @lc code=end

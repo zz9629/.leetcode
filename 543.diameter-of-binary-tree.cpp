@@ -18,19 +18,20 @@
  */
 class Solution {
 public:
+    // 1
     int maxDepth(TreeNode* root) {
         if (!root) return 0;
         return 1 + max(maxDepth(root->left), maxDepth(root->right));
     }
 
     // bad solution, 两次递归，耗时
-    int diameterOfBinaryTree(TreeNode* root) {
+    int diameterOfBinaryTree__(TreeNode* root) {
         int temp = maxDepth(root->left) + maxDepth(root->right);
         return max(temp, max(diameterOfBinaryTree(root->left), diameterOfBinaryTree(root->right)));
     }
 
-    // diameter作为全局变量
-    int helper(TreeNode* root, int& diameter)
+    // 2. diameter作为全局变量
+    int helper_(TreeNode* root, int& diameter)
     {
         if(!root) return 0;
         int l = helper(root->left, diameter);
@@ -39,12 +40,22 @@ public:
         return 1 + max(l, r);
     }
 
-    int diameterOfBinaryTree(TreeNode* root) {
+    int diameterOfBinaryTree_(TreeNode* root) {
         if(!root) return 0;
         int diameter = 0;
         helper(root, diameter);
         return diameter;
     }
+
+
+    int helper(TreeNode* root, int & result)
+    {
+    }
+
+
+    int diameterOfBinaryTree(TreeNode* root) {
+    }
+
 };
 // @lc code=end
 

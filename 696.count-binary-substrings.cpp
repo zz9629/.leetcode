@@ -48,15 +48,15 @@ public:
             {
                 result += min(cur, pre);
                 pre = cur;
-                cur = 1;
+                cur = 1; // 初始化为1
             }
         }
-        return result += min(cur, pre);
+        result += min(cur, pre);
+        return result;// 最后更新一下
     }
 
 
     int countBinarySubstrings(string s) {
-
     }
 
 };

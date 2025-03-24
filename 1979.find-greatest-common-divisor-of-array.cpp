@@ -39,16 +39,10 @@ public:
         return b == 0 ? a : gcd(b, a % b);
     }
 
+
+    
     int findGCD(vector<int>& nums) {
-        int a = nums[0];
-        int b = a;
-        for (auto & num: nums)
-        {
-            a = max(a, num);
-            b = min(b, num);
-        }
-        
-        return gcd(a, b);
+        return 0;
     }
 
 };

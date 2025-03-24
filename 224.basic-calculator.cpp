@@ -30,6 +30,7 @@ Output: 23
 #include "iostream"
 #include <numeric>
 #include <valarray>
+#include <vector>
  using namespace std;
 // @lc code=start
 class Solution {
@@ -100,7 +101,7 @@ public:
 
     int calculate_helper(string& s, int start, int& end) {
         vector<int> values;
-        long long num = 0;
+        long long num = 0; // 需要用longlong
         char sign = '+';
         string op = "+-*/";
         for (int i = start; i < s.length(); i++)
@@ -138,46 +139,18 @@ public:
     }
     // -------------------------------------------------------------------------
 
-
-    int helper(string & s, int start, int & end)
+    bool isOperator(char ch)
     {
-        vector<int> values;
-        long long num = 0;
-        char sign = '+';
         string ops = "+-*/";
-        for (int i = start; i < s.length(); i++)
-        {
-            char ch = s[i];
-            if (ch == ' ') continue;
-            else if (ch >= '0' && ch <= '9') num = num * 10 + ch - '0';
-            else if (find(ops.begin(), ops.end(), ch) != ops.end())
-            {
-                update(values, num, sign);
-                sign = ch;
-                num = 0;
-            }
-            else if (ch == '(')
-            {
-                int j = i;
-                num = helper(s, i + 1, j);
-                i = j;
-            }
-            else if (ch == ')')
-            {
-                end = i;
-                update(values, num, sign);
-                return accumulate(values.begin(), values.end(), 0);
-            }
-        }
-
-        update(values, num, sign);
-        return accumulate(values.begin(), values.end(), 0);
+        return count(ops.begin(), ops.end(), ch); 
     }
 
 
+    int helper(string& s, int start, int& end)
+    {
+    }
+
     int calculate(string& s) {
-        int end;
-        return helper(s, 0, end);
     }
 
 };

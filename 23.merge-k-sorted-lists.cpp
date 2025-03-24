@@ -25,7 +25,7 @@ struct ListNode {
  *     ListNode(int x, ListNode *next) : val(x), next(next) {}
  * };
  */
-class Solution {
+class Solution_ {
 public:
     ListNode* merge(ListNode* & a, ListNode* & b)
     {
@@ -90,6 +90,13 @@ public:
 
     struct com
     {
+        /*
+            priority_queue 默认是最大堆，用std::less<int>
+                bool operator()(const int& a, const int& b) { return a < b; }
+                这表示 a < b 时返回 true，意味着 a 的优先级低于 b，最终导致大值优先。
+            如果想要最小堆（min-heap），可以使用 std::greater<int>：
+                priority_queue<int, vector<int>, greater<int>> pq; // 改成小顶堆
+        */
         bool operator()(ListNode* a, ListNode* b)
         {
             return a->val > b->val;
@@ -124,6 +131,14 @@ public:
         ListNode *dummyNext = dummy->next;
         delete dummy;
         return dummyNext;
+    }
+};
+
+class Solution {
+public:
+    ListNode* mergeKLists(vector<ListNode*>& lists) {
+        
+        return nullptr;
     }
 };
 // @lc code=end

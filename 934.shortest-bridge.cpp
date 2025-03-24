@@ -34,7 +34,7 @@ public:
         }
     }
 
-    int shortestBridge(vector<vector<int> >& grid) {
+    int shortestBridge_(vector<vector<int> >& grid) {
         if (grid.empty() || grid[0].empty()) return 0;
         int m = grid.size(), n = grid[0].size();
         bool found = false;
@@ -63,6 +63,7 @@ public:
             {
                 auto front = points.front();
                 points.pop();
+                // 直接找neighbors
                 for (auto & dir: directions)
                 {
                     int row = front.first + dir.first;
@@ -88,6 +89,12 @@ public:
         }
         return level;
     }
+
+
+    int shortestBridge(vector<vector<int> >& grid) {
+        return 0;
+    }
+
 };
 // @lc code=end
 

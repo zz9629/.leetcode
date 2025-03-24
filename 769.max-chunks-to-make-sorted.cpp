@@ -24,7 +24,7 @@ public:
     } 
 
     // 适用于任意初始值的递增数组, 如排列后为[2, ..., n]
-    int maxChunksToSorted_(vector<int>& arr) {
+    int maxChunksToSorted(vector<int>& arr) {
         int n = arr.size();
         if (arr.empty()) return 0;
         int res = 0;
@@ -42,6 +42,7 @@ public:
                     end_pos = i;
                     // 更新最大值
                     max_val = find_max(arr, start_pos, end_pos);
+                    // max_val = max(max_val, arr[i]);
                 }
             }
 
@@ -65,16 +66,16 @@ public:
         return res;
     }
 
-    int maxChunksToSorted(vector<int>& arr) {
+    // int maxChunksToSorted___(vector<int>& arr) {
     
-    }
+    // }
 };
 // @lc code=end
 
 int main()
 {
     Solution s;
-    vector<int> nums = {1, 5, 4, 3, 2};
+    vector<int> nums = {1,4,0,2,3,5}; // expected: 2
     cout << s.maxChunksToSorted(nums);
     return 0;
 }
