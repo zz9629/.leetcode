@@ -34,7 +34,7 @@ public:
 
     // preorder的start 和end， 以及inorder的start
     // 和通过len找，没什么区别
-    TreeNode* helper(vector<int>& preorder, int preStart, int preEnd, int inStart) {
+    TreeNode* helper_(vector<int>& preorder, int preStart, int preEnd, int inStart) {
         if (preStart > preEnd) return nullptr;
         // if (len <= 0 || len > preorder.size()) return nullptr;
         if (preStart < 0 || preStart >= preorder.size() || inStart < 0 || inStart >= preorder.size()) 
@@ -58,15 +58,15 @@ public:
         {
             int lenLeft = rootIndex - inStart;
             // int lenRight = len - lenLeft - 1;
-            // rootNode->left = helper(preorder, preStart + 1, inStart, lenLeft);
-            rootNode->left = helper(preorder, preStart + 1, preStart + lenLeft, inStart);
-            // rootNode->right = helper(preorder, preStart + lenLeft + 1, rootIndex + 1, lenRight);
-            rootNode->right = helper(preorder, preStart + lenLeft + 1, preEnd, rootIndex + 1);
+            // rootNode->left = helper_(preorder, preStart + 1, inStart, lenLeft);
+            rootNode->left = helper_(preorder, preStart + 1, preStart + lenLeft, inStart);
+            // rootNode->right = helper_(preorder, preStart + lenLeft + 1, rootIndex + 1, lenRight);
+            rootNode->right = helper_(preorder, preStart + lenLeft + 1, preEnd, rootIndex + 1);
         }
         return rootNode;
     }
 
-    TreeNode* buildTree(vector<int>& preorder, vector<int>& inorder) {
+    TreeNode* buildTree_(vector<int>& preorder, vector<int>& inorder) {
         for (int i = 0; i < preorder.size(); i++)
         {
             map[inorder[i]] = i;
@@ -74,8 +74,22 @@ public:
 
         int preStart = 0, inStart = 0;
         int len = preorder.size();
-        return helper(preorder, preStart, preorder.size() - 1, inStart);
+        return helper_(preorder, preStart, preorder.size() - 1, inStart);
     }
+
+
+    
+
+    TreeNode* buildTree(vector<int>& preorder, vector<int>& inorder) {
+      
+    
+    
+    
+        return nullptr;
+    }
+
+
+
 };
 // @lc code=end
 

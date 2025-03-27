@@ -58,6 +58,23 @@ public:
     }
 
     ListNode* swapPairs(ListNode* head) {
+        // pre, node1 -> node2 -> node2 
+        if (!head || !head->next) return head;
+        ListNode* dummy = new ListNode(0);
+        ListNode* cur = head, *pre = dummy;
+        while (cur && cur->next)
+        {
+            auto next = cur->next->next;
+            auto temp = cur->next;
+
+            pre->next = temp;
+            temp->next = cur;
+            cur->next = next;
+
+            pre = cur;
+            cur = next;
+        }
+        return dummy->next;
     }
 
 };

@@ -78,7 +78,6 @@
         }
 
         ListNode* sortList(ListNode* head) {
-            
         }
 
     };

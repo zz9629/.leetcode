@@ -6,6 +6,11 @@
 
 // @lc code=start
 #include <unordered_map>
+#include <string>
+#include <vector>
+#include <iostream>
+
+using namespace std;
 class Solution {
 public:
     bool compareMaps(std::unordered_map<char, int> & mapA, 
@@ -73,3 +78,17 @@ public:
 };
 // @lc code=end
 
+int main()
+{
+    for (auto i = 1; i <= 128; i++)
+    {
+        cout << char(i) << " ";
+    }
+
+    for (auto i = '1'; i <= '9'; i++)
+    {
+        cout << int(i) << " ";
+    }
+
+    return 0;
+}

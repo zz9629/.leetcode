@@ -56,10 +56,42 @@ public:
 
     void calLps(string& needle, vector<int>& lps)
     {
+        int p = -1;
+        for (int i = 1; i < needle.length(); i++)
+        {
+            while (p > -1 && needle[p + 1] != needle[i]) {
+                p = lps[p];
+            }
+            if (needle[p + 1] == needle[i])
+            {
+                p++;
+            }
+            lps[i] = p;
+        }
     }
 
     int strStr(string haystack, string needle)
     {
+        if (needle.length() > haystack.length()) return -1;
+        vector<int> lps(needle.length(), -1);
+        calLps(needle, lps);
+        int p = -1;
+        for (int i = 0; i < haystack.length(); i++)
+        {
+            while (p > -1 && needle[p + 1] != haystack[i])
+            {
+                p = lps[p];
+            }
+            if (needle[p + 1] == haystack[i])
+            {
+                p++;
+            }
+            if (p == needle.length() - 1)
+            {
+                return i - p;
+            }
+        }
+        return -1;
     }
 };
 // @lc code=end
