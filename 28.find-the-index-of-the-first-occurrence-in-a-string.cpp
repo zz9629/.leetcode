@@ -10,7 +10,7 @@ using namespace std;
 class Solution {
 public:
     // Longest Prefix Suffix 
-    void calLps_(const string& needle, vector<int>& next)
+    void calLps_(const string& needle, vector<int>& lps)
     {   
         int p = -1;
         // 计算next[j]的值
@@ -18,13 +18,13 @@ public:
         {
             while (p > -1 && needle[p + 1] != needle[j])
             {
-                p = next[p]; // 如果下一位不相同，往前回溯
+                p = lps[p]; // 如果下一位不相同，往前回溯
             }
             if (needle[p + 1] == needle[j])
             {
                 ++p; // 更新相同的最大前缀和最大后缀长
             }
-            next[j] = p;
+            lps[j] = p;
         }
     }
          
@@ -56,41 +56,11 @@ public:
 
     void calLps(string& needle, vector<int>& lps)
     {
-        int p = -1;
-        for (int i = 1; i < needle.length(); i++)
-        {
-            while (p > -1 && needle[p + 1] != needle[i]) {
-                p = lps[p];
-            }
-            if (needle[p + 1] == needle[i])
-            {
-                p++;
-            }
-            lps[i] = p;
-        }
     }
 
     int strStr(string haystack, string needle)
     {
-        if (needle.length() > haystack.length()) return -1;
-        vector<int> lps(needle.length(), -1);
-        calLps(needle, lps);
-        int p = -1;
-        for (int i = 0; i < haystack.length(); i++)
-        {
-            while (p > -1 && needle[p + 1] != haystack[i])
-            {
-                p = lps[p];
-            }
-            if (needle[p + 1] == haystack[i])
-            {
-                p++;
-            }
-            if (p == needle.length() - 1)
-            {
-                return i - p;
-            }
-        }
+        
         return -1;
     }
 };

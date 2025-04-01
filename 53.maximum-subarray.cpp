@@ -6,8 +6,11 @@
 
 // dp[i]：表示以 nums[i] 结尾 的 连续 子数组的最大和。
 
-// @lc code=start
 #include <climits>
+#include "vector"
+using namespace std;
+
+// @lc code=start
 class Solution {
 public:
     int maxSubArray_(vector<int>& nums) {
@@ -37,7 +40,17 @@ public:
 
     int maxSubArray(vector<int>& nums) {
         // 写出2d以及空间压缩后的1d
+        int n = nums.size();
+        int pre = nums[0], cur = 0;
+        int res = pre;
 
+        for (int i = 1; i < n; i++)
+        {
+            cur = max(nums[i], nums[i] + pre);
+            res = max(res, cur);
+            pre = cur;
+        }
+        return res;
     }
 
 };

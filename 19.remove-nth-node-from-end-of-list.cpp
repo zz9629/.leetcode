@@ -27,7 +27,7 @@ public:
         if (!head) return head;
         
         auto fast = head;
-        for (int i = 0; i < n; i++) fast = fast->next;
+        for (int i = 0; i < n && fast; i++) fast = fast->next;
         if (!fast) // 删除头节点
         {
             auto next = head->next;

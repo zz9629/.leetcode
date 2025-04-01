@@ -30,10 +30,10 @@ class Solution {
 public:
     long long countPrefixSuffixPairs_(vector<string>& words) {
         unique_ptr<TrieNode> root = make_unique<TrieNode>();
-        long res = 0;
+        long res = 0; // 注意要初始化
         // 每一个词
         for(string& str: words){
-            TrieNode* node = root.get(); // 注意get()取地址
+            TrieNode* node = root.get(); // 注意get()取地址,  // 赋值这里要用get()
             // word中的每一个字母
             for(int i = 0; i < str.size(); i++){
                 // 双指针
@@ -42,9 +42,9 @@ public:
                 /* Equals
                     if (cur->children.find(key) == cur->children.end())
                     {
-                        cur->children[key] = new Node();
+                        cur->children[key] = make_unique<Node>();
                     }
-                    cur = cur->children[key];
+                    cur = cur->children[key].get();  // 赋值这里要用get()
                 */
                 res += node->ctr;   // 前面有相同prefix/suffix的词
             }
@@ -63,12 +63,13 @@ public:
             auto cur = root.get();
             for (int i = 0; i < word.length(); i++)
             {
+
                 int key = (word[i] - 'a') * 26 + word[word.length() - 1 - i] - 'a';
                 if (cur->children.find(key) == cur->children.end())
                 {
                     cur->children[key] = make_unique<Node>();
                 }
-                cur = cur->children[key].get();
+                cur = cur->children[key].get(); // 赋值这里要用get()
                 result += cur->count;
             }
 

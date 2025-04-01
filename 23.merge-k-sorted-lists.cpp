@@ -110,7 +110,11 @@ public:
         priority_queue<ListNode*, vector<ListNode*>, com> pq;
         for (auto& l : lists)
         {   
-            if (l) pq.push(l);
+            // 一定要检查l有效性
+            if (l) 
+            {
+                pq.push(l);
+            }
         }
         
         ListNode* dummy = new ListNode(-1);
@@ -136,8 +140,9 @@ public:
 
 class Solution {
 public:
+
     ListNode* mergeKLists(vector<ListNode*>& lists) {
-        
+
         return nullptr;
     }
 };

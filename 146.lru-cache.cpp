@@ -39,7 +39,6 @@ public:
     }
     
     void put(int key, int value) {
-        // in map, find it, re-arrange
         auto it = map.find(key);
         if (it == map.end()) 
         {
@@ -54,6 +53,7 @@ public:
             addFirst(node);
             map[key] = node; // 更新
         }
+        // in map, find it, re-arrange
         else 
         {
             auto node = map[key];
@@ -81,16 +81,16 @@ private:
 
     void addFirst(Node*& node)
     {
-        // empty
-        if (head->next == tail)
-        {
-            head->next = node;
-            node->pre = head;
+        // empty 不用写这一段
+        // if (head->next == tail)
+        // {
+        //     head->next = node;
+        //     node->pre = head;
             
-            node->next = tail;
-            tail->pre = node;
-        }
-        else 
+        //     node->next = tail;
+        //     tail->pre = node;
+        // }
+        // else 
         {
             auto first = this->head->next;
             first->pre = node;

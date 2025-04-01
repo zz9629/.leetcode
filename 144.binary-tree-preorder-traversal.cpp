@@ -53,7 +53,7 @@ public:
     }
 
 
-    vector<int> preorderTraversal(TreeNode* root) {
+    vector<int> preorderTraversal_(TreeNode* root) {
         vector<int> result;
         stack<TreeNode*> nodes;
         if (root) nodes.push(root);
@@ -67,6 +67,17 @@ public:
         }
         return result;
     }
+
+
+
+    
+
+    vector<int> preorderTraversal(TreeNode* root) {
+        vector<int> res;
+       
+        return res;
+    }
+
 
 };
 // @lc code=end

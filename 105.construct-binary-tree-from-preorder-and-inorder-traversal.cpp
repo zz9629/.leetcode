@@ -3,7 +3,8 @@
  *
  * [105] Construct Binary Tree from Preorder and Inorder Traversal
  */
- #include <unordered_map>
+ #include <cstddef>
+#include <unordered_map>
 #include <vector>
  #include <stack>
  using namespace std;
@@ -78,18 +79,22 @@ public:
     }
 
 
-    
 
-    TreeNode* buildTree(vector<int>& preorder, vector<int>& inorder) {
-      
-    
-    
-    
-        return nullptr;
+    TreeNode* helper(vector<int>& preorder, int startPre, int endPre, int startIn, int endIn)
+    {
+        if (startPre > endPre) return nullptr;
+        int pivot = preorder[startPre];
+        auto root = new TreeNode(pivot);
+        auto index = map[pivot];
+        int len = index - startIn;
+        root->left = helper(preorder, startPre + 1, startPre + len, startIn, index - 1);
+        root->right = helper(preorder, startPre + len + 1, endPre, index + 1, endIn);
+        return root;
     }
 
-
-
+    TreeNode* buildTree(vector<int>& preorder, vector<int>& inorder) {
+        
+    }
 };
 // @lc code=end
 
