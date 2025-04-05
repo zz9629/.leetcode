@@ -23,11 +23,14 @@
  */
 class Solution {
 public:
-    ListNode* removeNthFromEnd_(ListNode* head, int n) {
+    ListNode* removeNthFromEnd(ListNode* head, int n) {
         if (!head) return head;
         
         auto fast = head;
-        for (int i = 0; i < n && fast; i++) fast = fast->next;
+        while (n-- && fast) 
+        {
+            fast = fast->next;
+        }
         if (!fast) // 删除头节点
         {
             auto next = head->next;
@@ -49,10 +52,10 @@ public:
         return head;
     }
 
-    ListNode* removeNthFromEnd(ListNode* head, int n) {
+    // ListNode* removeNthFromEnd(ListNode* head, int n) {
         
-        return head;
-    }
+    //     return head;
+    // }
 
 };
 // @lc code=end

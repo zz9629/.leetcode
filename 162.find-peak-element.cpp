@@ -34,17 +34,30 @@ public:
 
     int findPeakElement(vector<int>& nums) {
         int left = 0, right = nums.size() - 1;
-        while (left <= right)
+        while (left < right)
         {
             int mid = left + (right- left) / 2;
             bool l = mid == 0 || nums[mid] > nums[mid - 1];
             bool r = mid == nums.size() - 1 || nums[mid] > nums[mid + 1];
             if (l && r) return mid;
-            else if (l) left = mid + 1;
-            else if (r) right = mid - 1;
-            else right--;
+            // else if (l) left = mid + 1;
+            else if (r) right = mid;
+            /*
+                mid
+                  \
+                   \
+                   mid + 1
+            */
+            else left = mid + 1;
+            /*
+                   mid + 1
+                    / 
+                   /
+                mid
+            */
         }
-        return 0;
+        return right; // left equals right
+   
     }
 
 };

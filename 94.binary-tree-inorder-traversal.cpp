@@ -20,7 +20,7 @@ struct TreeNode {
  * Definition for a binary tree node.
  * struct TreeNode {
  *     int val;
-*     TreeNode *left;  AQAQsw   请问首尾4我
+*     TreeNode *left; 
  *     TreeNode *right;
  *     TreeNode() : val(0), left(nullptr), right(nullptr) {}
  *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
