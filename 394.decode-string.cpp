@@ -88,7 +88,6 @@ public:
     {
         string result = "";
         int num = 0;
-        string str = "";
         for (int i = start; i < s.length(); i++)
         {
 
@@ -102,7 +101,6 @@ public:
 
                 updateStr(result, str, num);
                 num = 0;
-                str = "";
             }
             else if (s[i] == ']')
             {

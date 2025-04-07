@@ -68,7 +68,7 @@ public:
     }
 
     TreeNode* buildTree_(vector<int>& preorder, vector<int>& inorder) {
-        for (int i = 0; i < preorder.size(); i++)
+        for (int i = 0; i < inorder.size(); i++)
         {
             map[inorder[i]] = i;
         }

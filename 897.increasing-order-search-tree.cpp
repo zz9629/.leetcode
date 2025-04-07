@@ -105,14 +105,14 @@ public:
     The most important thing to notice is that when we traverse left, the root is passed in, but when we traverse right, the tail is passed in.
     In other words, traversing left passes in the current node to the next iteration, while traversing right passes in the current node's parent.
     */
-    TreeNode* increasingBST(TreeNode* root, TreeNode* tail = NULL) {
+    TreeNode* increasingBST__(TreeNode* root, TreeNode* tail = NULL) {
         // if this null node was a left child, tail is its parent
         // if this null node was a right child, tail is its parent's parent
         if (!root) return tail;
 
         // // 递归处理左子树，找到最小节点（新树的根）
         // recursive call, traversing left while passing in the current node as tail
-        TreeNode* res = increasingBST(root->left, root);
+        TreeNode* res = increasingBST__(root->left, root);
         
         //we don't want the current node to have a left child, only a single right child
         root->left = NULL;
@@ -121,14 +121,17 @@ public:
         // # what is tail? this part is important
         // # if the current node is a left child, tail will be its parent
         // # else if the current node is a right child, tail will be its parent's parent
-        root->right = increasingBST(root->right, tail);
+        root->right = increasingBST__(root->right, tail);
         
         // # throughout the whole algorithm, res is the leaf of the leftmost path in the original tree
         // # its the smallest node and thus will be the root of the modified tree
         return res;
     }
 
-
+    
+   
+    TreeNode* increasingBST(TreeNode* root) {
+    }
 
 };
 // @lc code=end

@@ -7,61 +7,63 @@
 // youtube视频 
 // https://www.youtube.com/watch?v=oobqoCJlHA0
  
-// @lc code=start
+#include <memory>
 #include <unordered_map>
+using namespace std;
+// @lc code=start
 class Node
 {
 public:
-    std::unordered_map<char, Node*> childern;
+    std::unordered_map<char, unique_ptr<Node> > childern;
     bool isEnd;
 };
 
 class Trie {
 public:
     Trie() {
-        this->root = new Node();
+        root = make_unique<Node>();
     }
     
     void insert(string word) {
-        auto cur = this->root;
+        auto cur = root.get();
         for (auto & ch: word)
         {
             if (cur->childern.find(ch) == cur->childern.end())
             {
-                cur->childern[ch] = new Node();
+                cur->childern[ch] = make_unique<Node>();
             }
-            cur = cur->childern[ch];
+            cur = cur->childern[ch].get();
         }
         cur->isEnd = true;
     }
     
     bool search(string word) {
-        auto cur = this->root;
+        auto cur = this->root.get();
         for (auto & ch: word)
         {
             if (cur->childern.find(ch) == cur->childern.end())
             {
                 return false;
             }
-            cur = cur->childern[ch];
+            cur = cur->childern[ch].get();
         }
         return cur->isEnd;
     }
     
     bool startsWith(string prefix) {
-        auto cur = this->root;
+        auto cur = this->root.get();
         for (auto & ch: prefix)
         {
             if (cur->childern.find(ch) == cur->childern.end())
             {
                 return false;
             }
-            cur = cur->childern[ch];
+            cur = cur->childern[ch].get();
         }
         return true;
     }
 
-    Node* root;
+    std::unique_ptr<Node> root;
 };
 
 /**

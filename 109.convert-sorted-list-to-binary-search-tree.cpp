@@ -44,7 +44,7 @@ struct TreeNode {
  */
 class Solution {
 public:
-    TreeNode* sortedListToBST(ListNode* head) {
+    TreeNode* sortedListToBST_(ListNode* head) {
         if (!head) return nullptr;
         if (!head->next) 
         {
@@ -71,6 +71,12 @@ public:
         root->right = sortedListToBST(nextNode);
         return root;
     }
+
+
+    TreeNode* sortedListToBST(ListNode* head) {
+        
+    }
+
 };
 // @lc code=end
 
