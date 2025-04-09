@@ -17,7 +17,7 @@ public:
         原来的最小乘积 × 负数 → 变成最大乘积；
     所以我们需要在乘之前先交换 max 和 min。
     */
-    int maxProduct(vector<int>& nums) {
+    int maxProduct_(vector<int>& nums) {
         int maxVal, minVal, result;
         maxVal = minVal = result = nums[0];
 
@@ -33,6 +33,14 @@ public:
         }
         return result;
     }
+
+    int maxProduct(vector<int>& nums) {
+       
+    }
+
 };
 // @lc code=end
 
+
+// nums = [2,3,-2,4]  -> 6
+// nums = [-2,0,-1]   -> 0
