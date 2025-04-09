@@ -26,7 +26,9 @@ public:
         [pro]This is more maintainable since e.g., adding more member variables do not require modifying the clone() method.
         [con]However, if your class has non-copyable resources (e.g., raw pointers, file handles), 
             then a deep copy implementation might be necessary. In such cases, you'd need a custom copy constructor or a manual deep copy inside clone().
-        */
+            一般来说，如果要禁用拷贝构造函数
+                C++11 及以上推荐方式：使用 = delete 明确禁止：
+            */
     }
 
     void printInfo() const
