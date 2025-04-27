@@ -16,13 +16,17 @@ public:
                                 {10, "X"}, {9, "IX"}, {5, "V"}, {4, "IV"}, 
                                 {1, "I"}};
         string res;
-        for (auto & [value, symbol] : map)
+        for (auto& [value, symbol]: map)
         {
-            if (num == 0) break;
-            while (num >= value) 
+            // 这里是大于等于符号
+            while (num >= value)
             {
                 res += symbol;
                 num -= value;
+            }
+            if (num == 0)
+            {
+                break;
             }
         }
         return res;
@@ -36,3 +40,10 @@ public:
 };
 // @lc code=end
 
+int main()
+{
+    Solution s;
+    s.intToRoman_(3749);
+
+    return 0;
+}

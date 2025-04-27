@@ -8,6 +8,7 @@
 
 #include <climits>
 #include "vector"
+#include <iostream>
 using namespace std;
 
 // @lc code=start
@@ -56,3 +57,12 @@ public:
 };
 // @lc code=end
 
+
+int main()
+{
+    vector<int> nums{-1};
+    Solution s;
+    cout << s.maxSubArray(nums);
+
+    return 0;
+}
